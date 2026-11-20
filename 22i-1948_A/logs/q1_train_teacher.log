@@ -1,0 +1,36 @@
+
+===== q1_train_teacher | 2026-11-20 07:43:02 =====
+{'epochs': 30, 'batch_size': 128, 'lr': 0.05, 'wd': 0.0005, 'warmup_epochs': 1, 'seed': 42, 'no_amp': False, 'force': False, 'smoke': False, 'no_pretrained': False, 'label_smoothing': 0.0}
+Downloading: "https://download.pytorch.org/models/resnet50-11ad3fa6.pth" to /root/.cache/torch/hub/checkpoints/resnet50-11ad3fa6.pth
+[teacher] ResNet-50 params=23.71M  ImageNet-init=True  device=cuda
+[teacher] ep   1/30 loss=1.9121 ce=1.912 train@1=52.65 val@1=65.51 val@5=91.51 (52.0s, total 0m52s)
+[teacher] ep   2/30 loss=0.9236 ce=0.924 train@1=72.85 val@1=71.64 val@5=93.42 (47.2s, total 1m40s)
+[teacher] ep   3/30 loss=0.7157 ce=0.716 train@1=78.27 val@1=71.82 val@5=93.63 (48.3s, total 2m29s)
+[teacher] ep   4/30 loss=0.6155 ce=0.616 train@1=80.94 val@1=73.60 val@5=94.51 (48.9s, total 3m19s)
+[teacher] ep   5/30 loss=0.5549 ce=0.555 train@1=82.55 val@1=73.79 val@5=94.80 (49.7s, total 4m10s)
+[teacher] ep   6/30 loss=0.5114 ce=0.511 train@1=83.96 val@1=74.10 val@5=94.29 (49.5s, total 5m00s)
+[teacher] ep   7/30 loss=0.4770 ce=0.477 train@1=84.79 val@1=74.78 val@5=95.07 (49.5s, total 5m51s)
+[teacher] ep   8/30 loss=0.4400 ce=0.440 train@1=85.96 val@1=72.43 val@5=93.86 (49.6s, total 6m41s)
+[teacher] ep   9/30 loss=0.4081 ce=0.408 train@1=86.90 val@1=73.96 val@5=94.45 (49.5s, total 7m32s)
+[teacher] ep  10/30 loss=0.3761 ce=0.376 train@1=87.92 val@1=74.40 val@5=93.89 (49.7s, total 8m22s)
+[teacher] ep  11/30 loss=0.3376 ce=0.338 train@1=89.07 val@1=75.88 val@5=94.78 (49.5s, total 9m13s)
+[teacher] ep  12/30 loss=0.3087 ce=0.309 train@1=89.91 val@1=77.09 val@5=95.48 (49.7s, total 10m04s)
+[teacher] ep  13/30 loss=0.2610 ce=0.261 train@1=91.42 val@1=77.02 val@5=94.93 (49.7s, total 10m54s)
+[teacher] ep  14/30 loss=0.2256 ce=0.226 train@1=92.52 val@1=75.98 val@5=94.97 (49.6s, total 11m45s)
+[teacher] ep  15/30 loss=0.1783 ce=0.178 train@1=94.09 val@1=78.06 val@5=95.22 (49.6s, total 12m36s)
+[teacher] ep  16/30 loss=0.1475 ce=0.148 train@1=95.08 val@1=78.34 val@5=95.48 (49.5s, total 13m26s)
+[teacher] ep  17/30 loss=0.1146 ce=0.115 train@1=96.27 val@1=79.35 val@5=95.83 (49.7s, total 14m17s)
+[teacher] ep  18/30 loss=0.0856 ce=0.086 train@1=97.20 val@1=79.79 val@5=95.80 (49.6s, total 15m08s)
+[teacher] ep  19/30 loss=0.0604 ce=0.060 train@1=98.09 val@1=81.03 val@5=96.18 (49.7s, total 15m58s)
+[teacher] ep  20/30 loss=0.0430 ce=0.043 train@1=98.64 val@1=81.79 val@5=96.28 (49.6s, total 16m49s)
+[teacher] ep  21/30 loss=0.0276 ce=0.028 train@1=99.18 val@1=82.41 val@5=96.75 (49.6s, total 17m40s)
+[teacher] ep  22/30 loss=0.0176 ce=0.018 train@1=99.55 val@1=82.93 val@5=96.79 (49.6s, total 18m31s)
+[teacher] ep  23/30 loss=0.0130 ce=0.013 train@1=99.68 val@1=83.15 val@5=96.64 (49.4s, total 19m21s)
+[teacher] ep  24/30 loss=0.0079 ce=0.008 train@1=99.82 val@1=83.71 val@5=96.85 (49.7s, total 20m12s)
+[teacher] ep  25/30 loss=0.0067 ce=0.007 train@1=99.85 val@1=83.72 val@5=96.80 (49.6s, total 21m02s)
+[teacher] ep  26/30 loss=0.0053 ce=0.005 train@1=99.88 val@1=83.87 val@5=96.89 (49.7s, total 21m53s)
+[teacher] ep  27/30 loss=0.0049 ce=0.005 train@1=99.88 val@1=83.84 val@5=96.93 (49.6s, total 22m44s)
+[teacher] ep  28/30 loss=0.0041 ce=0.004 train@1=99.92 val@1=84.01 val@5=96.99 (49.7s, total 23m34s)
+[teacher] ep  29/30 loss=0.0035 ce=0.004 train@1=99.95 val@1=84.03 val@5=97.06 (49.8s, total 24m25s)
+[teacher] ep  30/30 loss=0.0039 ce=0.004 train@1=99.93 val@1=84.08 val@5=96.96 (49.6s, total 25m16s)
+[teacher] final test top1=84.08 top5=96.96 (time 25m21s) -> /content/drive/MyDrive/22i-1948_A/checkpoints/q1/teacher/resnet50_teacher.pt

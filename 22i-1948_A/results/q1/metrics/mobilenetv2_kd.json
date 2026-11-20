@@ -1,0 +1,17 @@
+{
+  "model": "mobilenetv2",
+  "variant": "kd",
+  "params": 2351972,
+  "size_mb": 9.19294261932373,
+  "test_top1": 75.2,
+  "test_top5": 94.55,
+  "best_epoch_top1": 75.41,
+  "epochs": 30,
+  "train_time_s": 1296.8024401664734,
+  "kd": true,
+  "temperature": 4.0,
+  "alpha": 0.9,
+  "beta": 1.0,
+  "hints": "mid+final",
+  "feat_loss": "fitnet"
+}

@@ -1,0 +1,8 @@
+key,model,variant,question,dataset,onnx_file,onnx_size_mb,opset,exporter,input_shape,max_abs_diff_vs_torch,max_rel_diff_vs_torch,top1_agreement
+mobilenetv2_baseline,MobileNetV2,baseline,Q1,cifar100,onnx_models/mobilenetv2_baseline.onnx,8.952646255493164,17,torchscript,Nx3x32x32,4.76837158203125e-06,2.961779655203829e-07,1.0
+squeezenet_baseline,SqueezeNet,baseline,Q1,cifar100,onnx_models/squeezenet_baseline.onnx,2.9647598266601562,17,torchscript,Nx3x32x32,3.814697265625e-06,3.2453202482020926e-07,1.0
+efficientnet_lite0_baseline,EfficientNet-Lite0,baseline,Q1,cifar100,onnx_models/efficientnet_lite0_baseline.onnx,13.310833930969238,17,torchscript,Nx3x32x32,4.76837158203125e-06,3.1823636968169744e-07,1.0
+mobilenetv2_kd,MobileNetV2,kd,Q1,cifar100,onnx_models/mobilenetv2_kd.onnx,8.952646255493164,17,torchscript,Nx3x32x32,7.62939453125e-06,2.8501498109994406e-07,1.0
+squeezenet_kd,SqueezeNet,kd,Q1,cifar100,onnx_models/squeezenet_kd.onnx,2.9647598266601562,17,torchscript,Nx3x32x32,1.33514404296875e-05,5.764879710431739e-07,1.0
+efficientnet_lite0_kd,EfficientNet-Lite0,kd,Q1,cifar100,onnx_models/efficientnet_lite0_kd.onnx,13.310833930969238,17,torchscript,Nx3x32x32,7.62939453125e-06,3.623154602814847e-07,1.0
+nas_best,NAS-best,nas,Q2,cifar10,onnx_models/nas_best.onnx,0.8706684112548828,17,torchscript,Nx3x24x24,5.245208740234375e-06,5.819645175175553e-07,1.0

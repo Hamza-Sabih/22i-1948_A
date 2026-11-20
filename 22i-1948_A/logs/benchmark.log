@@ -1,0 +1,24 @@
+
+===== benchmark | 2026-11-20 10:10:44 =====
+[bench] resnet50_teacher             params=23.705M size=90.73MB MFLOPs=2596.0 top1=84.08 torch-cpu=58.00ms ort-cpu=nanms
+[bench] mobilenetv2_baseline         params=2.352M size=9.20MB MFLOPs=176.2 top1=72.55 torch-cpu=9.61ms ort-cpu=2.88ms
+[bench] squeezenet_baseline          params=0.777M size=3.03MB MFLOPs=48.5 top1=64.26 torch-cpu=5.10ms ort-cpu=0.64ms
+[bench] efficientnet_lite0_baseline  params=3.499M size=13.60MB MFLOPs=231.3 top1=72.79 torch-cpu=10.23ms ort-cpu=3.25ms
+[bench] mobilenetv2_kd               params=2.352M size=9.20MB MFLOPs=176.2 top1=75.2 torch-cpu=9.52ms ort-cpu=2.78ms
+[bench] squeezenet_kd                params=0.777M size=3.03MB MFLOPs=48.5 top1=64.12 torch-cpu=5.27ms ort-cpu=0.60ms
+[bench] efficientnet_lite0_kd        params=3.499M size=13.60MB MFLOPs=231.3 top1=75.49 torch-cpu=10.49ms ort-cpu=3.28ms
+[bench] nas_best                     params=0.227M size=0.93MB MFLOPs=83.4 top1=92.3 torch-cpu=4.67ms ort-cpu=1.70ms
+           student  params_M  baseline_top1  kd_top1  kd_gain_top1  baseline_top5  kd_top5  kd_gain_top5  teacher_top1  compression_ratio
+       MobileNetV2  2.351972          72.55    75.20          2.65          93.13    94.55          1.42         84.08          10.078884
+        SqueezeNet  0.776740          64.26    64.12         -0.14          89.22    89.72          0.50         84.08          30.518902
+EfficientNet-Lite0  3.499108          72.79    75.49          2.70          93.69    94.53          0.84         84.08           6.774656
+[bench] wrote /content/drive/MyDrive/22i-1948_A/results/benchmark_results.csv and /content/drive/MyDrive/22i-1948_A/results/kd_comparison.csv
+[plots] /content/drive/MyDrive/22i-1948_A/results/plots/q1_teacher_training.png
+[plots] /content/drive/MyDrive/22i-1948_A/results/plots/q1_student_training_curves.png
+[plots] /content/drive/MyDrive/22i-1948_A/results/plots/q1_kd_vs_baseline.png
+[plots] /content/drive/MyDrive/22i-1948_A/results/plots/cpu_latency_torch_vs_onnx.png
+[plots] /content/drive/MyDrive/22i-1948_A/results/plots/q1_accuracy_vs_latency.png
+[plots] /content/drive/MyDrive/22i-1948_A/results/plots/q2_nas_constraints_scatter.png
+[plots] /content/drive/MyDrive/22i-1948_A/results/plots/q2_nas_accuracy_vs_latency.png
+[plots] /content/drive/MyDrive/22i-1948_A/results/plots/q2_nas_history.png
+[plots] /content/drive/MyDrive/22i-1948_A/results/plots/q2_nas_best_training.png

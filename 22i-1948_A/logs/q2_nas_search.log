@@ -1,0 +1,82 @@
+
+===== q2_nas_search | 2026-11-20 09:32:33 =====
+{'n_trials': 30, 'max_total_trials': 150, 'trial_epochs': 10, 'train_subset': 20000, 'val_size': 5000, 'batch_size': 256, 'lr': 0.1, 'wd': 0.0005, 'max_latency_ms': 5.0, 'max_size_mb': 1.0, 'max_peak_mem_mb': 6.0, 'threads': 1, 'latency_runs': 30, 'seed': 42, 'study_name': 'hw_aware_nas_cifar10', 'fresh': False, 'smoke': False}
+[nas] constraints: {'max_latency_ms': 5.0, 'max_size_mb': 1.0, 'max_peak_mem_mb': 6.0, 'threads': 1}
+[nas] search space size ~ 4.483e+14 architectures
+[nas] candidate training images=20000  validation images=5000 (held out from train)
+[nas] trial   0 r24 params=398k lat=5.56ms size=1.54MB mem=1.77MB -> REJECTED (latency 5.56ms > 5.0ms; size 1.54MB > 1.0MB)
+[nas] trial   1 r24 params=940k lat=7.42ms size=3.66MB mem=4.59MB -> REJECTED (latency 7.42ms > 5.0ms; size 3.66MB > 1.0MB)
+[nas] trial   2 r24 params=155k lat=5.62ms size=0.63MB mem=1.48MB -> REJECTED (latency 5.62ms > 5.0ms)
+[nas] trial   3 r24 params=701k lat=6.19ms size=2.70MB mem=3.69MB -> REJECTED (latency 6.19ms > 5.0ms; size 2.70MB > 1.0MB)
+[nas] trial   4 r32 params=1344k lat=4.37ms size=5.17MB mem=5.81MB -> REJECTED (size 5.17MB > 1.0MB)
+[nas] trial   5 r32 params=45k lat=1.35ms size=0.19MB mem=1.28MB -> val@1=57.76 score=57.03 (25s)
+[nas] trial   6 r16 params=201k lat=3.99ms size=0.82MB mem=1.04MB -> val@1=65.22 score=62.80 (19s)
+[nas] trial   7 r16 params=182k lat=1.58ms size=0.71MB mem=1.12MB -> val@1=61.42 score=60.07 (8s)
+[nas] trial   8 r16 params=352k lat=4.63ms size=1.42MB mem=1.83MB -> REJECTED (size 1.42MB > 1.0MB)
+[nas] trial   9 r16 params=1105k lat=6.12ms size=4.31MB mem=4.71MB -> REJECTED (latency 6.12ms > 5.0ms; size 4.31MB > 1.0MB)
+[nas] trial  10 r16 params=425k lat=4.28ms size=1.66MB mem=1.72MB -> REJECTED (size 1.66MB > 1.0MB)
+[nas] trial  11 r16 params=98k lat=1.82ms size=0.39MB mem=0.73MB -> val@1=60.22 score=59.11 (6s)
+[nas] trial  12 r16 params=149k lat=2.67ms size=0.62MB mem=0.81MB -> val@1=64.20 score=62.52 (16s)
+[nas] trial  13 r16 params=246k lat=3.21ms size=0.99MB mem=1.28MB -> val@1=65.50 score=63.23 (18s)
+[nas] trial  14 r16 params=254k lat=5.23ms size=1.02MB mem=1.32MB -> REJECTED (latency 5.23ms > 5.0ms; size 1.02MB > 1.0MB)
+[nas] trial  15 r16 params=120k lat=4.17ms size=0.49MB mem=0.58MB -> pruned by median rule after 6 epochs
+[nas] trial  16 r16 params=2925k lat=7.30ms size=11.19MB mem=11.67MB -> REJECTED (latency 7.30ms > 5.0ms; size 11.19MB > 1.0MB; peak_mem 11.67MB > 6.0MB)
+[nas] trial  17 r16 params=614k lat=7.45ms size=2.44MB mem=2.64MB -> REJECTED (latency 7.45ms > 5.0ms; size 2.44MB > 1.0MB)
+[nas] trial  18 r32 params=360k lat=3.78ms size=1.43MB mem=1.86MB -> REJECTED (size 1.43MB > 1.0MB)
+[nas] trial  19 r16 params=312k lat=4.05ms size=1.26MB mem=1.58MB -> REJECTED (size 1.26MB > 1.0MB)
+[nas] trial  20 r16 params=609k lat=2.67ms size=2.36MB mem=2.60MB -> REJECTED (size 2.36MB > 1.0MB)
+[nas] trial  21 r16 params=143k lat=3.03ms size=0.61MB mem=0.79MB -> val@1=67.40 score=65.58 (24s)
+[nas] trial  22 r16 params=1169k lat=6.40ms size=4.58MB mem=5.06MB -> REJECTED (latency 6.40ms > 5.0ms; size 4.58MB > 1.0MB)
+[nas] trial  23 r16 params=71k lat=3.75ms size=0.31MB mem=0.51MB -> pruned by median rule after 8 epochs
+[nas] trial  24 r16 params=51k lat=2.66ms size=0.22MB mem=0.31MB -> pruned by median rule after 6 epochs
+[nas] trial  25 r24 params=150k lat=3.82ms size=0.63MB mem=2.08MB -> val@1=79.12 score=76.96 (81s)
+[nas] trial  26 r24 params=158k lat=4.82ms size=0.67MB mem=2.12MB -> val@1=75.62 score=73.02 (71s)
+[nas] trial  27 r24 params=505k lat=6.75ms size=1.97MB mem=3.43MB -> REJECTED (latency 6.75ms > 5.0ms; size 1.97MB > 1.0MB)
+[nas] trial  28 r24 params=227k lat=4.01ms size=0.93MB mem=2.38MB -> val@1=79.68 score=77.15 (79s)
+[nas] trial  29 r24 params=227k lat=4.99ms size=0.93MB mem=2.38MB -> val@1=80.46 score=77.53 (72s)
+[nas] trial  30 r24 params=372k lat=4.66ms size=1.50MB mem=2.96MB -> REJECTED (size 1.50MB > 1.0MB)
+[nas] trial  31 r24 params=51k lat=2.64ms size=0.23MB mem=0.74MB -> val@1=70.98 score=69.69 (23s)
+[nas] trial  32 r24 params=170k lat=6.41ms size=0.71MB mem=2.16MB -> REJECTED (latency 6.41ms > 5.0ms)
+[nas] trial  33 r24 params=242k lat=4.87ms size=0.99MB mem=2.44MB -> val@1=79.48 score=76.54 (57s)
+[nas] trial  34 r24 params=108k lat=2.93ms size=0.46MB mem=0.85MB -> pruned by median rule after 8 epochs
+[nas] trial  35 r24 params=281k lat=5.69ms size=1.15MB mem=2.60MB -> REJECTED (latency 5.69ms > 5.0ms; size 1.15MB > 1.0MB)
+[nas] trial  36 r24 params=765k lat=5.32ms size=2.99MB mem=4.14MB -> REJECTED (latency 5.32ms > 5.0ms; size 2.99MB > 1.0MB)
+[nas] trial  37 r24 params=119k lat=2.35ms size=0.48MB mem=1.93MB -> val@1=71.78 score=70.36 (49s)
+[nas] trial  38 r24 params=491k lat=9.47ms size=1.96MB mem=4.04MB -> REJECTED (latency 9.47ms > 5.0ms; size 1.96MB > 1.0MB)
+[nas] trial  39 r24 params=162k lat=5.40ms size=0.68MB mem=1.68MB -> REJECTED (latency 5.40ms > 5.0ms)
+[nas] trial  40 r24 params=605k lat=4.58ms size=2.35MB mem=3.17MB -> REJECTED (size 2.35MB > 1.0MB)
+[nas] trial  41 r24 params=186k lat=2.25ms size=0.73MB mem=2.15MB -> val@1=71.66 score=70.03 (21s)
+[nas] trial  42 r24 params=246k lat=5.77ms size=1.02MB mem=2.46MB -> REJECTED (latency 5.77ms > 5.0ms; size 1.02MB > 1.0MB)
+[nas] trial  43 r32 params=345k lat=6.44ms size=1.37MB mem=3.98MB -> REJECTED (latency 6.44ms > 5.0ms; size 1.37MB > 1.0MB)
+[nas] trial  44 r32 params=564k lat=7.29ms size=2.25MB mem=3.74MB -> REJECTED (latency 7.29ms > 5.0ms; size 2.25MB > 1.0MB)
+[nas] trial  45 r24 params=488k lat=9.47ms size=1.95MB mem=3.33MB -> REJECTED (latency 9.47ms > 5.0ms; size 1.95MB > 1.0MB)
+[nas] trial  46 r24 params=67k lat=5.40ms size=0.30MB mem=1.07MB -> REJECTED (latency 5.40ms > 5.0ms)
+[nas] trial  47 r24 params=75k lat=4.05ms size=0.34MB mem=0.73MB -> pruned by median rule after 6 epochs
+[nas] trial  48 r24 params=195k lat=9.72ms size=0.81MB mem=2.21MB -> REJECTED (latency 9.72ms > 5.0ms)
+[nas] trial  49 r24 params=1186k lat=3.89ms size=4.56MB mem=5.17MB -> REJECTED (size 4.56MB > 1.0MB)
+[nas] trial  50 r24 params=119k lat=4.80ms size=0.51MB mem=1.95MB -> val@1=74.80 score=72.37 (49s)
+[nas] trial  51 r24 params=84k lat=4.05ms size=0.37MB mem=1.35MB -> val@1=73.38 score=71.39 (35s)
+[nas] trial  52 r16 params=235k lat=5.20ms size=0.97MB mem=1.60MB -> REJECTED (latency 5.20ms > 5.0ms)
+[nas] trial  53 r24 params=94k lat=2.78ms size=0.39MB mem=1.10MB -> pruned by median rule after 6 epochs
+[nas] trial  54 r24 params=137k lat=8.14ms size=0.58MB mem=2.03MB -> REJECTED (latency 8.14ms > 5.0ms)
+[nas] trial  55 r32 params=55k lat=6.97ms size=0.26MB mem=1.71MB -> REJECTED (latency 6.97ms > 5.0ms)
+[nas] trial  56 r24 params=593k lat=7.25ms size=2.36MB mem=3.81MB -> REJECTED (latency 7.25ms > 5.0ms; size 2.36MB > 1.0MB)
+[nas] trial  57 r24 params=99k lat=3.12ms size=0.43MB mem=1.24MB -> val@1=72.90 score=71.23 (38s)
+[nas] trial  58 r24 params=98k lat=6.18ms size=0.42MB mem=1.87MB -> REJECTED (latency 6.18ms > 5.0ms)
+[nas] trial  59 r24 params=1171k lat=10.34ms size=4.58MB mem=5.59MB -> REJECTED (latency 10.34ms > 5.0ms; size 4.58MB > 1.0MB)
+[nas] trial  60 r24 params=119k lat=6.65ms size=0.51MB mem=1.93MB -> REJECTED (latency 6.65ms > 5.0ms)
+[nas] trial  61 r24 params=84k lat=3.91ms size=0.35MB mem=2.85MB -> pruned by median rule after 6 epochs
+[nas] trial  62 r24 params=175k lat=6.24ms size=0.74MB mem=2.19MB -> REJECTED (latency 6.24ms > 5.0ms)
+[nas] trial  63 r24 params=147k lat=6.14ms size=0.62MB mem=2.08MB -> REJECTED (latency 6.14ms > 5.0ms)
+[nas] trial  64 r24 params=141k lat=6.76ms size=0.60MB mem=1.51MB -> REJECTED (latency 6.76ms > 5.0ms)
+[nas] trial  65 r24 params=119k lat=6.78ms size=0.51MB mem=1.95MB -> REJECTED (latency 6.78ms > 5.0ms)
+[nas] trial  66 r16 params=108k lat=4.18ms size=0.46MB mem=0.91MB -> pruned by median rule after 6 epochs
+[nas] trial  67 r24 params=497k lat=4.52ms size=1.98MB mem=2.51MB -> REJECTED (size 1.98MB > 1.0MB)
+[nas] trial  68 r24 params=107k lat=2.73ms size=0.44MB mem=1.91MB -> val@1=76.22 score=74.69 (49s)
+[nas] trial  69 r16 params=72k lat=1.74ms size=0.31MB mem=0.95MB -> pruned by median rule after 6 epochs
+[nas] trial  70 r24 params=110k lat=2.50ms size=0.46MB mem=1.46MB -> val@1=76.50 score=75.04 (41s)
+[nas] trial  71 r24 params=168k lat=2.00ms size=0.67MB mem=1.20MB -> val@1=74.60 score=73.13 (11s)
+[nas] trials: 72 total, {'completed': 21, 'pruned_early': 9, 'rejected_constraints': 42}
+[nas] BEST trial 29: val@1=80.46 score=77.53 lat=4.99ms size=0.933MB
+[nas] arch: r24_stem24k3_[mbconv-d3-c48-k3-e2-silu|mbconv-d3-c48-k7-e6-silu|mbconv-d1-c128-k3-e4-silu]_head256
+[nas] search time this session 15m50s -> /content/drive/MyDrive/22i-1948_A/results/q2/best_architecture.json

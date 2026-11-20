@@ -1,0 +1,19 @@
+{
+  "model": "nas_best",
+  "trial": 29,
+  "arch_string": "r24_stem24k3_[mbconv-d3-c48-k3-e2-silu|mbconv-d3-c48-k7-e6-silu|mbconv-d1-c128-k3-e4-silu]_head256",
+  "test_top1": 92.3,
+  "test_top5": 99.8,
+  "best_epoch_top1": 92.4,
+  "search_val_top1": 80.46,
+  "epochs": 60,
+  "train_time_s": 1099.083364725113,
+  "params": 227410,
+  "size_mb": 0.9327764511108398,
+  "flops": 83386880,
+  "cpu_latency_ms": 4.316377499890223,
+  "cpu_latency_mean_ms": 4.513601180024125,
+  "cpu_latency_p90_ms": 4.895447998933378,
+  "peak_mem_mb": 2.383056640625,
+  "peak_act_mem_mb": 1.49029541015625
+}

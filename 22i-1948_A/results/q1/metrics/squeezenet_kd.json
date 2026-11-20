@@ -1,0 +1,17 @@
+{
+  "model": "squeezenet",
+  "variant": "kd",
+  "params": 776740,
+  "size_mb": 3.028517723083496,
+  "test_top1": 64.12,
+  "test_top5": 89.72,
+  "best_epoch_top1": 64.12,
+  "epochs": 30,
+  "train_time_s": 787.3631041049957,
+  "kd": true,
+  "temperature": 4.0,
+  "alpha": 0.9,
+  "beta": 1.0,
+  "hints": "mid+final",
+  "feat_loss": "fitnet"
+}

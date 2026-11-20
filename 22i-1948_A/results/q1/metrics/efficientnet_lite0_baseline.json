@@ -1,0 +1,12 @@
+{
+  "model": "efficientnet_lite0",
+  "variant": "baseline",
+  "params": 3499108,
+  "size_mb": 13.593611717224121,
+  "test_top1": 72.79,
+  "test_top5": 93.69,
+  "best_epoch_top1": 72.85,
+  "epochs": 30,
+  "train_time_s": 716.8329162597656,
+  "kd": false
+}

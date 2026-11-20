@@ -1,0 +1,4688 @@
+{
+  "constraints": {
+    "max_latency_ms": 5.0,
+    "max_size_mb": 1.0,
+    "max_peak_mem_mb": 6.0,
+    "threads": 1
+  },
+  "args": {
+    "n_trials": 30,
+    "max_total_trials": 150,
+    "trial_epochs": 10,
+    "train_subset": 20000,
+    "val_size": 5000,
+    "batch_size": 256,
+    "lr": 0.1,
+    "wd": 0.0005,
+    "max_latency_ms": 5.0,
+    "max_size_mb": 1.0,
+    "max_peak_mem_mb": 6.0,
+    "threads": 1,
+    "latency_runs": 30,
+    "seed": 42,
+    "study_name": "hw_aware_nas_cifar10",
+    "fresh": false,
+    "smoke": false
+  },
+  "search_space": {
+    "resolutions": [
+      16,
+      24,
+      32
+    ],
+    "stem_channels": [
+      16,
+      24,
+      32
+    ],
+    "stem_kernels": [
+      3,
+      5
+    ],
+    "num_stages": [
+      2,
+      3,
+      4
+    ],
+    "depths": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "kernels": [
+      3,
+      5,
+      7
+    ],
+    "block_types": [
+      "conv",
+      "dws",
+      "mbconv"
+    ],
+    "expansions": [
+      2,
+      4,
+      6
+    ],
+    "activations": [
+      "relu",
+      "relu6",
+      "hardswish",
+      "silu",
+      "gelu"
+    ],
+    "head_channels": [
+      0,
+      128,
+      256,
+      512
+    ],
+    "dropouts": [
+      0.0,
+      0.1,
+      0.2
+    ],
+    "stage_channels": [
+      [
+        16,
+        24,
+        32,
+        48
+      ],
+      [
+        32,
+        48,
+        64,
+        96
+      ],
+      [
+        64,
+        96,
+        128,
+        160
+      ],
+      [
+        128,
+        160,
+        192,
+        256
+      ]
+    ],
+    "approx_num_architectures": 448271159040000
+  },
+  "trials": [
+    {
+      "trial": 0,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 5.556881499614974,
+      "size_mb": 1.5398950576782227,
+      "peak_mem_mb": 1.7696456909179688,
+      "params": 397930,
+      "mflops": 260.081536,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "latency 5.56ms > 5.0ms; size 1.54MB > 1.0MB",
+      "duration_s": 1.0000321865081787,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 16,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 4,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 1
+          },
+          {
+            "block": "conv",
+            "depth": 2,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu6",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 160,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 128,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 16, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 4, \"channels\": 32, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 1}, {\"block\": \"conv\", \"depth\": 2, \"channels\": 48, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu6\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 160, \"kernel\": 7, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 2}], \"head_channels\": 128, \"dropout\": 0.1}",
+      "hw": {
+        "params": 397930,
+        "size_mb": 1.5398950576782227,
+        "flops": 260081536,
+        "cpu_latency_ms": 5.556881499614974,
+        "cpu_latency_mean_ms": 5.705288300123357,
+        "cpu_latency_p90_ms": 6.366260000504553,
+        "peak_mem_mb": 1.7696456909179688,
+        "peak_act_mem_mb": 0.2471923828125
+      }
+    },
+    {
+      "trial": 1,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 7.415111499540217,
+      "size_mb": 3.6575727462768555,
+      "peak_mem_mb": 4.585395812988281,
+      "params": 940090,
+      "mflops": 100.186496,
+      "resolution": 24,
+      "num_stages": 4,
+      "total_blocks": 11,
+      "violations": "latency 7.42ms > 5.0ms; size 3.66MB > 1.0MB",
+      "duration_s": 1.0738224983215332,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 32,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 24,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "relu6",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 2,
+            "channels": 96,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "hardswish",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 2,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 160,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 32, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 24, \"kernel\": 3, \"expansion\": 4, \"activation\": \"relu6\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 2, \"channels\": 96, \"kernel\": 7, \"expansion\": 2, \"activation\": \"hardswish\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 2, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 160, \"kernel\": 7, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 940090,
+        "size_mb": 3.6575727462768555,
+        "flops": 100186496,
+        "cpu_latency_ms": 7.415111499540217,
+        "cpu_latency_mean_ms": 7.763201733420526,
+        "cpu_latency_p90_ms": 8.504931000061333,
+        "peak_mem_mb": 4.585395812988281,
+        "peak_act_mem_mb": 0.9755859375
+      }
+    },
+    {
+      "trial": 2,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 5.623026999273861,
+      "size_mb": 0.6337003707885742,
+      "peak_mem_mb": 1.4837570190429688,
+      "params": 154810,
+      "mflops": 108.06016,
+      "resolution": 24,
+      "num_stages": 2,
+      "total_blocks": 8,
+      "violations": "latency 5.62ms > 5.0ms",
+      "duration_s": 0.8398127555847168,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 16,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 2,
+            "activation": "gelu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 128,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 16, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 4, \"channels\": 48, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 4, \"channels\": 64, \"kernel\": 5, \"expansion\": 2, \"activation\": \"gelu\", \"stride\": 2}], \"head_channels\": 128, \"dropout\": 0.1}",
+      "hw": {
+        "params": 154810,
+        "size_mb": 0.6337003707885742,
+        "flops": 108060160,
+        "cpu_latency_ms": 5.623026999273861,
+        "cpu_latency_mean_ms": 6.889854733162792,
+        "cpu_latency_p90_ms": 10.445353998875362,
+        "peak_mem_mb": 1.4837570190429688,
+        "peak_act_mem_mb": 0.8812255859375
+      }
+    },
+    {
+      "trial": 3,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.191982999553147,
+      "size_mb": 2.699397087097168,
+      "peak_mem_mb": 3.6877593994140625,
+      "params": 701234,
+      "mflops": 207.50848,
+      "resolution": 24,
+      "num_stages": 2,
+      "total_blocks": 5,
+      "violations": "latency 6.19ms > 5.0ms; size 2.70MB > 1.0MB",
+      "duration_s": 0.7176492214202881,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 16,
+            "kernel": 3,
+            "expansion": 6,
+            "activation": "hardswish",
+            "stride": 1
+          },
+          {
+            "block": "conv",
+            "depth": 4,
+            "channels": 64,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 512,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"mbconv\", \"depth\": 1, \"channels\": 16, \"kernel\": 3, \"expansion\": 6, \"activation\": \"hardswish\", \"stride\": 1}, {\"block\": \"conv\", \"depth\": 4, \"channels\": 64, \"kernel\": 7, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 512, \"dropout\": 0.2}",
+      "hw": {
+        "params": 701234,
+        "size_mb": 2.699397087097168,
+        "flops": 207508480,
+        "cpu_latency_ms": 6.191982999553147,
+        "cpu_latency_mean_ms": 6.337222733418457,
+        "cpu_latency_p90_ms": 7.899611000539153,
+        "peak_mem_mb": 3.6877593994140625,
+        "peak_act_mem_mb": 1.00433349609375
+      }
+    },
+    {
+      "trial": 4,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 4.366640499938512,
+      "size_mb": 5.168868064880371,
+      "peak_mem_mb": 5.8086395263671875,
+      "params": 1344042,
+      "mflops": 54.304768,
+      "resolution": 32,
+      "num_stages": 4,
+      "total_blocks": 9,
+      "violations": "size 5.17MB > 1.0MB",
+      "duration_s": 0.7264041900634766,
+      "arch": {
+        "resolution": 32,
+        "stem_channels": 16,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "dws",
+            "depth": 2,
+            "channels": 32,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 2,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 2,
+            "channels": 128,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "relu6",
+            "stride": 2
+          }
+        ],
+        "head_channels": 512,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 32, \"stem_channels\": 16, \"stem_kernel\": 3, \"stages\": [{\"block\": \"dws\", \"depth\": 2, \"channels\": 32, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 2, \"channels\": 48, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 2, \"channels\": 128, \"kernel\": 7, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 3, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"relu6\", \"stride\": 2}], \"head_channels\": 512, \"dropout\": 0.1}",
+      "hw": {
+        "params": 1344042,
+        "size_mb": 5.168868064880371,
+        "flops": 54304768,
+        "cpu_latency_ms": 4.366640499938512,
+        "cpu_latency_mean_ms": 4.532503633284553,
+        "cpu_latency_p90_ms": 5.37937800072541,
+        "peak_mem_mb": 5.8086395263671875,
+        "peak_act_mem_mb": 0.6689453125
+      }
+    },
+    {
+      "trial": 5,
+      "status": "completed",
+      "score": 57.03263732194842,
+      "val_top1": 57.76,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 1.345615500213171,
+      "size_mb": 0.1891164779663086,
+      "peak_mem_mb": 1.283538818359375,
+      "params": 45066,
+      "mflops": 31.249408,
+      "resolution": 32,
+      "num_stages": 2,
+      "total_blocks": 2,
+      "violations": "",
+      "duration_s": 25.09093475341797,
+      "arch": {
+        "resolution": 32,
+        "stem_channels": 16,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 96,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 32, \"stem_channels\": 16, \"stem_kernel\": 3, \"stages\": [{\"block\": \"dws\", \"depth\": 1, \"channels\": 48, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 96, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 45066,
+        "size_mb": 0.1891164779663086,
+        "flops": 31249408,
+        "cpu_latency_ms": 1.345615500213171,
+        "cpu_latency_mean_ms": 1.3681998333292238,
+        "cpu_latency_p90_ms": 1.4909429992258083,
+        "peak_mem_mb": 1.283538818359375,
+        "peak_act_mem_mb": 1.1068115234375
+      }
+    },
+    {
+      "trial": 6,
+      "status": "completed",
+      "score": 62.804800583092145,
+      "val_top1": 65.22,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 3.9905479998196824,
+      "size_mb": 0.8189802169799805,
+      "peak_mem_mb": 1.0367813110351562,
+      "params": 200738,
+      "mflops": 26.405376,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 9,
+      "violations": "",
+      "duration_s": 18.516177654266357,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 16,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 160,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 128,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 3, \"channels\": 16, \"kernel\": 5, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 64, \"kernel\": 5, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 160, \"kernel\": 3, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 128, \"dropout\": 0.1}",
+      "hw": {
+        "params": 200738,
+        "size_mb": 0.8189802169799805,
+        "flops": 26405376,
+        "cpu_latency_ms": 3.9905479998196824,
+        "cpu_latency_mean_ms": 4.320490766682876,
+        "cpu_latency_p90_ms": 5.005944998629275,
+        "peak_mem_mb": 1.0367813110351562,
+        "peak_act_mem_mb": 0.25250244140625
+      }
+    },
+    {
+      "trial": 7,
+      "status": "completed",
+      "score": 60.0745257736434,
+      "val_top1": 61.42,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 1.5838264998819795,
+      "size_mb": 0.7119436264038086,
+      "peak_mem_mb": 1.116119384765625,
+      "params": 182330,
+      "mflops": 42.226688,
+      "resolution": 16,
+      "num_stages": 2,
+      "total_blocks": 5,
+      "violations": "",
+      "duration_s": 8.017275094985962,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 32,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 24,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 1
+          },
+          {
+            "block": "conv",
+            "depth": 2,
+            "channels": 96,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.0
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 32, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 3, \"channels\": 24, \"kernel\": 5, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 1}, {\"block\": \"conv\", \"depth\": 2, \"channels\": 96, \"kernel\": 3, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.0}",
+      "hw": {
+        "params": 182330,
+        "size_mb": 0.7119436264038086,
+        "flops": 42226688,
+        "cpu_latency_ms": 1.5838264998819795,
+        "cpu_latency_mean_ms": 1.5857909000260406,
+        "cpu_latency_p90_ms": 1.663283999732812,
+        "peak_mem_mb": 1.116119384765625,
+        "peak_act_mem_mb": 0.41632080078125
+      }
+    },
+    {
+      "trial": 8,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 4.628284000318672,
+      "size_mb": 1.4213285446166992,
+      "peak_mem_mb": 1.8251876831054688,
+      "params": 352010,
+      "mflops": 32.795136,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 9,
+      "violations": "size 1.42MB > 1.0MB",
+      "duration_s": 0.7589232921600342,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 64,
+            "kernel": 7,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 96,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 128,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"dws\", \"depth\": 3, \"channels\": 48, \"kernel\": 5, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 64, \"kernel\": 7, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 96, \"kernel\": 3, \"expansion\": 4, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 128, \"dropout\": 0.1}",
+      "hw": {
+        "params": 352010,
+        "size_mb": 1.4213285446166992,
+        "flops": 32795136,
+        "cpu_latency_ms": 4.628284000318672,
+        "cpu_latency_mean_ms": 4.651716533226136,
+        "cpu_latency_p90_ms": 4.922374999296153,
+        "peak_mem_mb": 1.8251876831054688,
+        "peak_act_mem_mb": 0.448974609375
+      }
+    },
+    {
+      "trial": 9,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.116126000051736,
+      "size_mb": 4.307215690612793,
+      "peak_mem_mb": 4.713203430175781,
+      "params": 1105282,
+      "mflops": 73.28768,
+      "resolution": 16,
+      "num_stages": 4,
+      "total_blocks": 10,
+      "violations": "latency 6.12ms > 5.0ms; size 4.31MB > 1.0MB",
+      "duration_s": 0.8689923286437988,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 2,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 4,
+            "activation": "gelu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 160,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "relu6",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 2,
+            "channels": 256,
+            "kernel": 5,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 0,
+        "dropout": 0.0
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 2, \"channels\": 48, \"kernel\": 5, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 64, \"kernel\": 5, \"expansion\": 4, \"activation\": \"gelu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 160, \"kernel\": 3, \"expansion\": 1, \"activation\": \"relu6\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 2, \"channels\": 256, \"kernel\": 5, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 0, \"dropout\": 0.0}",
+      "hw": {
+        "params": 1105282,
+        "size_mb": 4.307215690612793,
+        "flops": 73287680,
+        "cpu_latency_ms": 6.116126000051736,
+        "cpu_latency_mean_ms": 6.13809116663712,
+        "cpu_latency_p90_ms": 6.491329999334994,
+        "peak_mem_mb": 4.713203430175781,
+        "peak_act_mem_mb": 0.44769287109375
+      }
+    },
+    {
+      "trial": 10,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 4.284675000235438,
+      "size_mb": 1.6590280532836914,
+      "peak_mem_mb": 1.7236251831054688,
+      "params": 424642,
+      "mflops": 40.901632,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "size 1.66MB > 1.0MB",
+      "duration_s": 0.7313101291656494,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 1,
+            "channels": 16,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 1
+          },
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 4,
+            "channels": 160,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 512,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 1, \"channels\": 16, \"kernel\": 5, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 1}, {\"block\": \"conv\", \"depth\": 3, \"channels\": 64, \"kernel\": 5, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 4, \"channels\": 160, \"kernel\": 3, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 512, \"dropout\": 0.1}",
+      "hw": {
+        "params": 424642,
+        "size_mb": 1.6590280532836914,
+        "flops": 40901632,
+        "cpu_latency_ms": 4.284675000235438,
+        "cpu_latency_mean_ms": 4.291717266460182,
+        "cpu_latency_p90_ms": 4.7816349997447105,
+        "peak_mem_mb": 1.7236251831054688,
+        "peak_act_mem_mb": 0.08892822265625
+      }
+    },
+    {
+      "trial": 11,
+      "status": "completed",
+      "score": 59.106455740837845,
+      "val_top1": 60.22,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 1.818582499254262,
+      "size_mb": 0.3861112594604492,
+      "peak_mem_mb": 0.7281036376953125,
+      "params": 97994,
+      "mflops": 27.776,
+      "resolution": 16,
+      "num_stages": 2,
+      "total_blocks": 3,
+      "violations": "",
+      "duration_s": 5.559598922729492,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 32,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 1,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 1
+          },
+          {
+            "block": "conv",
+            "depth": 2,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.0
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 32, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 1, \"channels\": 48, \"kernel\": 5, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 1}, {\"block\": \"conv\", \"depth\": 2, \"channels\": 48, \"kernel\": 3, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.0}",
+      "hw": {
+        "params": 97994,
+        "size_mb": 0.3861112594604492,
+        "flops": 27776000,
+        "cpu_latency_ms": 1.818582499254262,
+        "cpu_latency_mean_ms": 1.9974856334859699,
+        "cpu_latency_p90_ms": 2.549336999436491,
+        "peak_mem_mb": 0.7281036376953125,
+        "peak_act_mem_mb": 0.3509521484375
+      }
+    },
+    {
+      "trial": 12,
+      "status": "completed",
+      "score": 62.51510327162687,
+      "val_top1": 64.2,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 2.6660424991860054,
+      "size_mb": 0.6184797286987305,
+      "peak_mem_mb": 0.8116836547851562,
+      "params": 148898,
+      "mflops": 20.71552,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 9,
+      "violations": "",
+      "duration_s": 15.728267908096313,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 16,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "relu6",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "relu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 3, \"channels\": 16, \"kernel\": 5, \"expansion\": 1, \"activation\": \"relu6\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 5, \"expansion\": 6, \"activation\": \"relu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 148898,
+        "size_mb": 0.6184797286987305,
+        "flops": 20715520,
+        "cpu_latency_ms": 2.6660424991860054,
+        "cpu_latency_mean_ms": 2.6636656667202865,
+        "cpu_latency_p90_ms": 2.821287000188022,
+        "peak_mem_mb": 0.8116836547851562,
+        "peak_act_mem_mb": 0.22784423828125
+      }
+    },
+    {
+      "trial": 13,
+      "status": "completed",
+      "score": 63.226914426879375,
+      "val_top1": 65.5,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 3.2092379997266107,
+      "size_mb": 0.9893903732299805,
+      "peak_mem_mb": 1.2849502563476562,
+      "params": 245634,
+      "mflops": 54.867968,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 9,
+      "violations": "",
+      "duration_s": 18.48652982711792,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 24,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu6",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "relu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 160,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.0
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 3, \"channels\": 24, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu6\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 5, \"expansion\": 6, \"activation\": \"relu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 160, \"kernel\": 5, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.0}",
+      "hw": {
+        "params": 245634,
+        "size_mb": 0.9893903732299805,
+        "flops": 54867968,
+        "cpu_latency_ms": 3.2092379997266107,
+        "cpu_latency_mean_ms": 3.2665670335821537,
+        "cpu_latency_p90_ms": 3.459849000137183,
+        "peak_mem_mb": 1.2849502563476562,
+        "peak_act_mem_mb": 0.3299560546875
+      }
+    },
+    {
+      "trial": 14,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 5.228329499914253,
+      "size_mb": 1.0159521102905273,
+      "peak_mem_mb": 1.321533203125,
+      "params": 253690,
+      "mflops": 73.495552,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 9,
+      "violations": "latency 5.23ms > 5.0ms; size 1.02MB > 1.0MB",
+      "duration_s": 0.7778446674346924,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 32,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 4,
+            "channels": 24,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu6",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "gelu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 2,
+            "channels": 160,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.0
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 32, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 4, \"channels\": 24, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu6\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 5, \"expansion\": 6, \"activation\": \"gelu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 2, \"channels\": 160, \"kernel\": 5, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.0}",
+      "hw": {
+        "params": 253690,
+        "size_mb": 1.0159521102905273,
+        "flops": 73495552,
+        "cpu_latency_ms": 5.228329499914253,
+        "cpu_latency_mean_ms": 5.226097233571636,
+        "cpu_latency_p90_ms": 5.463196999698994,
+        "peak_mem_mb": 1.321533203125,
+        "peak_act_mem_mb": 0.3380126953125
+      }
+    },
+    {
+      "trial": 15,
+      "status": "pruned_early",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 6,
+      "cpu_latency_ms": 4.165336999903957,
+      "size_mb": 0.4913301467895508,
+      "peak_mem_mb": 0.5767593383789062,
+      "params": 119962,
+      "mflops": 46.921984,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 9,
+      "violations": "",
+      "duration_s": 13.257725715637207,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 24,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu6",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 64,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 64,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 0,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 3, \"channels\": 24, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu6\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 64, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 64, \"kernel\": 3, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 0, \"dropout\": 0.1}",
+      "hw": {
+        "params": 119962,
+        "size_mb": 0.4913301467895508,
+        "flops": 46921984,
+        "cpu_latency_ms": 4.165336999903957,
+        "cpu_latency_mean_ms": 4.334965199935444,
+        "cpu_latency_p90_ms": 5.128951999722631,
+        "peak_mem_mb": 0.5767593383789062,
+        "peak_act_mem_mb": 0.11273193359375
+      }
+    },
+    {
+      "trial": 16,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 7.302229500965041,
+      "size_mb": 11.189484596252441,
+      "peak_mem_mb": 11.667747497558594,
+      "params": 2925034,
+      "mflops": 98.181632,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 9,
+      "violations": "latency 7.30ms > 5.0ms; size 11.19MB > 1.0MB; peak_mem 11.67MB > 6.0MB",
+      "duration_s": 0.8475086688995361,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 16,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 16,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 160,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 128,
+        "dropout": 0.0
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 16, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 3, \"channels\": 16, \"kernel\": 3, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 48, \"kernel\": 5, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 3, \"channels\": 160, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 128, \"dropout\": 0.0}",
+      "hw": {
+        "params": 2925034,
+        "size_mb": 11.189484596252441,
+        "flops": 98181632,
+        "cpu_latency_ms": 7.302229500965041,
+        "cpu_latency_mean_ms": 7.532417533244977,
+        "cpu_latency_p90_ms": 9.268678000807995,
+        "peak_mem_mb": 11.667747497558594,
+        "peak_act_mem_mb": 0.50244140625
+      }
+    },
+    {
+      "trial": 17,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 7.4471575007919455,
+      "size_mb": 2.4442968368530273,
+      "peak_mem_mb": 2.63677978515625,
+      "params": 613514,
+      "mflops": 19.956224,
+      "resolution": 16,
+      "num_stages": 4,
+      "total_blocks": 13,
+      "violations": "latency 7.45ms > 5.0ms; size 2.44MB > 1.0MB",
+      "duration_s": 0.9215555191040039,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 16,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 4,
+            "activation": "hardswish",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 160,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 160,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 128,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"dws\", \"depth\": 3, \"channels\": 16, \"kernel\": 3, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 64, \"kernel\": 5, \"expansion\": 4, \"activation\": \"hardswish\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 160, \"kernel\": 5, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 4, \"channels\": 160, \"kernel\": 3, \"expansion\": 2, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 128, \"dropout\": 0.2}",
+      "hw": {
+        "params": 613514,
+        "size_mb": 2.4442968368530273,
+        "flops": 19956224,
+        "cpu_latency_ms": 7.4471575007919455,
+        "cpu_latency_mean_ms": 7.935362166729949,
+        "cpu_latency_p90_ms": 9.944899000402074,
+        "peak_mem_mb": 2.63677978515625,
+        "peak_act_mem_mb": 0.2529296875
+      }
+    },
+    {
+      "trial": 18,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 3.7787374985782662,
+      "size_mb": 1.4277448654174805,
+      "peak_mem_mb": 1.8637161254882812,
+      "params": 360490,
+      "mflops": 86.569984,
+      "resolution": 32,
+      "num_stages": 3,
+      "total_blocks": 9,
+      "violations": "size 1.43MB > 1.0MB",
+      "duration_s": 0.580918550491333,
+      "arch": {
+        "resolution": 32,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 24,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu6",
+            "stride": 1
+          },
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "relu6",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 160,
+            "kernel": 5,
+            "expansion": 2,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.0
+      },
+      "arch_json": "{\"resolution\": 32, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"dws\", \"depth\": 3, \"channels\": 24, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu6\", \"stride\": 1}, {\"block\": \"conv\", \"depth\": 3, \"channels\": 32, \"kernel\": 5, \"expansion\": 1, \"activation\": \"relu6\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 160, \"kernel\": 5, \"expansion\": 2, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.0}",
+      "hw": {
+        "params": 360490,
+        "size_mb": 1.4277448654174805,
+        "flops": 86569984,
+        "cpu_latency_ms": 3.7787374985782662,
+        "cpu_latency_mean_ms": 3.8130252999811396,
+        "cpu_latency_p90_ms": 3.947491999497288,
+        "peak_mem_mb": 1.8637161254882812,
+        "peak_act_mem_mb": 0.47003173828125
+      }
+    },
+    {
+      "trial": 19,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 4.050920999361551,
+      "size_mb": 1.2581548690795898,
+      "peak_mem_mb": 1.58428955078125,
+      "params": 312482,
+      "mflops": 71.055872,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 10,
+      "violations": "size 1.26MB > 1.0MB",
+      "duration_s": 0.5985743999481201,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 24,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "relu6",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 128,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 3, \"channels\": 24, \"kernel\": 7, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 4, \"channels\": 64, \"kernel\": 5, \"expansion\": 6, \"activation\": \"relu6\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 64, \"kernel\": 5, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 2}], \"head_channels\": 128, \"dropout\": 0.1}",
+      "hw": {
+        "params": 312482,
+        "size_mb": 1.2581548690795898,
+        "flops": 71055872,
+        "cpu_latency_ms": 4.050920999361551,
+        "cpu_latency_mean_ms": 4.094047433378971,
+        "cpu_latency_p90_ms": 4.420409999511321,
+        "peak_mem_mb": 1.58428955078125,
+        "peak_act_mem_mb": 0.36572265625
+      }
+    },
+    {
+      "trial": 20,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 2.67187049939821,
+      "size_mb": 2.359755516052246,
+      "peak_mem_mb": 2.59759521484375,
+      "params": 608530,
+      "mflops": 36.983808,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "size 2.36MB > 1.0MB",
+      "duration_s": 0.5370075702667236,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 1,
+            "channels": 24,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "relu",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 160,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.0
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 1, \"channels\": 24, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 3, \"expansion\": 4, \"activation\": \"relu\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 3, \"channels\": 160, \"kernel\": 3, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.0}",
+      "hw": {
+        "params": 608530,
+        "size_mb": 2.359755516052246,
+        "flops": 36983808,
+        "cpu_latency_ms": 2.67187049939821,
+        "cpu_latency_mean_ms": 2.8570761998707894,
+        "cpu_latency_p90_ms": 3.5664740007632645,
+        "peak_mem_mb": 2.59759521484375,
+        "peak_act_mem_mb": 0.2640380859375
+      }
+    },
+    {
+      "trial": 21,
+      "status": "completed",
+      "score": 65.57683172815305,
+      "val_top1": 67.4,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 3.033560499716259,
+      "size_mb": 0.6097440719604492,
+      "peak_mem_mb": 0.7943344116210938,
+      "params": 143442,
+      "mflops": 13.268992,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 9,
+      "violations": "",
+      "duration_s": 23.514030933380127,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 16,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "relu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 16, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 6, \"activation\": \"relu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 143442,
+        "size_mb": 0.6097440719604492,
+        "flops": 13268992,
+        "cpu_latency_ms": 3.033560499716259,
+        "cpu_latency_mean_ms": 3.3657268667108533,
+        "cpu_latency_p90_ms": 4.412371999933384,
+        "peak_mem_mb": 0.7943344116210938,
+        "peak_act_mem_mb": 0.22955322265625
+      }
+    },
+    {
+      "trial": 22,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.396363999556343,
+      "size_mb": 4.576247215270996,
+      "peak_mem_mb": 5.0635833740234375,
+      "params": 1169450,
+      "mflops": 109.285888,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 10,
+      "violations": "latency 6.40ms > 5.0ms; size 4.58MB > 1.0MB",
+      "duration_s": 0.9244060516357422,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 32,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 96,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "relu6",
+            "stride": 2
+          }
+        ],
+        "head_channels": 0,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 32, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 3, \"channels\": 32, \"kernel\": 5, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 96, \"kernel\": 5, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 4, \"channels\": 128, \"kernel\": 5, \"expansion\": 6, \"activation\": \"relu6\", \"stride\": 2}], \"head_channels\": 0, \"dropout\": 0.1}",
+      "hw": {
+        "params": 1169450,
+        "size_mb": 4.576247215270996,
+        "flops": 109285888,
+        "cpu_latency_ms": 6.396363999556343,
+        "cpu_latency_mean_ms": 6.585120233163859,
+        "cpu_latency_p90_ms": 7.303809001314221,
+        "peak_mem_mb": 5.0635833740234375,
+        "peak_act_mem_mb": 0.53076171875
+      }
+    },
+    {
+      "trial": 23,
+      "status": "pruned_early",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 8,
+      "cpu_latency_ms": 3.750900000341062,
+      "size_mb": 0.3113851547241211,
+      "peak_mem_mb": 0.5108184814453125,
+      "params": 71442,
+      "mflops": 6.238208,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 6,
+      "violations": "",
+      "duration_s": 11.819945335388184,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 2,
+            "channels": 16,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "relu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 96,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"mbconv\", \"depth\": 2, \"channels\": 16, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 32, \"kernel\": 7, \"expansion\": 6, \"activation\": \"relu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 96, \"kernel\": 5, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 71442,
+        "size_mb": 0.3113851547241211,
+        "flops": 6238208,
+        "cpu_latency_ms": 3.750900000341062,
+        "cpu_latency_mean_ms": 3.950913033258985,
+        "cpu_latency_p90_ms": 4.908430999421398,
+        "peak_mem_mb": 0.5108184814453125,
+        "peak_act_mem_mb": 0.22894287109375
+      }
+    },
+    {
+      "trial": 24,
+      "status": "pruned_early",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 6,
+      "cpu_latency_ms": 2.6566400001684087,
+      "size_mb": 0.21932125091552734,
+      "peak_mem_mb": 0.31280517578125,
+      "params": 51386,
+      "mflops": 17.027584,
+      "resolution": 16,
+      "num_stages": 2,
+      "total_blocks": 6,
+      "violations": "",
+      "duration_s": 7.172648906707764,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 32,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 16,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 128,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 32, \"stem_kernel\": 5, \"stages\": [{\"block\": \"conv\", \"depth\": 3, \"channels\": 16, \"kernel\": 5, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 64, \"kernel\": 5, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 2}], \"head_channels\": 128, \"dropout\": 0.1}",
+      "hw": {
+        "params": 51386,
+        "size_mb": 0.21932125091552734,
+        "flops": 17027584,
+        "cpu_latency_ms": 2.6566400001684087,
+        "cpu_latency_mean_ms": 2.710157300134597,
+        "cpu_latency_p90_ms": 2.796095999656245,
+        "peak_mem_mb": 0.31280517578125,
+        "peak_act_mem_mb": 0.112548828125
+      }
+    },
+    {
+      "trial": 25,
+      "status": "completed",
+      "score": 76.96142683609389,
+      "val_top1": 79.12,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 3.817636999883689,
+      "size_mb": 0.6315183639526367,
+      "peak_mem_mb": 2.0836105346679688,
+      "params": 150482,
+      "mflops": 66.307328,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "",
+      "duration_s": 81.40678310394287,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 150482,
+        "size_mb": 0.6315183639526367,
+        "flops": 66307328,
+        "cpu_latency_ms": 3.817636999883689,
+        "cpu_latency_mean_ms": 3.8027068664935846,
+        "cpu_latency_p90_ms": 4.119915000046603,
+        "peak_mem_mb": 2.0836105346679688,
+        "peak_act_mem_mb": 1.49029541015625
+      }
+    },
+    {
+      "trial": 26,
+      "status": "completed",
+      "score": 73.02495279320749,
+      "val_top1": 75.62,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 4.816134500288172,
+      "size_mb": 0.6685934066772461,
+      "peak_mem_mb": 2.1173248291015625,
+      "params": 158354,
+      "mflops": 88.757504,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "",
+      "duration_s": 71.10504078865051,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 7, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 5, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 158354,
+        "size_mb": 0.6685934066772461,
+        "flops": 88757504,
+        "cpu_latency_ms": 4.816134500288172,
+        "cpu_latency_mean_ms": 5.003195366892517,
+        "cpu_latency_p90_ms": 5.730484999730834,
+        "peak_mem_mb": 2.1173248291015625,
+        "peak_act_mem_mb": 1.49212646484375
+      }
+    },
+    {
+      "trial": 27,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.746929499058751,
+      "size_mb": 1.970320701599121,
+      "peak_mem_mb": 3.4277496337890625,
+      "params": 504578,
+      "mflops": 489.15584,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "latency 6.75ms > 5.0ms; size 1.97MB > 1.0MB",
+      "duration_s": 0.7112736701965332,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"conv\", \"depth\": 4, \"channels\": 48, \"kernel\": 7, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 5, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 504578,
+        "size_mb": 1.970320701599121,
+        "flops": 489155840,
+        "cpu_latency_ms": 6.746929499058751,
+        "cpu_latency_mean_ms": 6.780596699779077,
+        "cpu_latency_p90_ms": 7.101863000571029,
+        "peak_mem_mb": 3.4277496337890625,
+        "peak_act_mem_mb": 1.48699951171875
+      }
+    },
+    {
+      "trial": 28,
+      "status": "completed",
+      "score": 77.14517094889715,
+      "val_top1": 79.68,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 4.0051314999800525,
+      "size_mb": 0.9327764511108398,
+      "peak_mem_mb": 2.383056640625,
+      "params": 227410,
+      "mflops": 83.38688,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "",
+      "duration_s": 79.08033728599548,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "hardswish",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 3, \"expansion\": 2, \"activation\": \"hardswish\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 128, \"kernel\": 3, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 227410,
+        "size_mb": 0.9327764511108398,
+        "flops": 83386880,
+        "cpu_latency_ms": 4.0051314999800525,
+        "cpu_latency_mean_ms": 4.061515466673882,
+        "cpu_latency_p90_ms": 4.230155000186642,
+        "peak_mem_mb": 2.383056640625,
+        "peak_act_mem_mb": 1.49029541015625
+      }
+    },
+    {
+      "trial": 29,
+      "status": "completed",
+      "score": 77.5311837488925,
+      "val_top1": 80.46,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 4.990099499991629,
+      "size_mb": 0.9327764511108398,
+      "peak_mem_mb": 2.383056640625,
+      "params": 227410,
+      "mflops": 83.38688,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "",
+      "duration_s": 71.53958678245544,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 128, \"kernel\": 3, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 227410,
+        "size_mb": 0.9327764511108398,
+        "flops": 83386880,
+        "cpu_latency_ms": 4.990099499991629,
+        "cpu_latency_mean_ms": 5.057361466788279,
+        "cpu_latency_p90_ms": 5.63188000160153,
+        "peak_mem_mb": 2.383056640625,
+        "peak_act_mem_mb": 1.49029541015625
+      }
+    },
+    {
+      "trial": 30,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 4.662798999561346,
+      "size_mb": 1.4969511032104492,
+      "peak_mem_mb": 2.9600753784179688,
+      "params": 371594,
+      "mflops": 100.20608,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "size 1.50MB > 1.0MB",
+      "duration_s": 0.6658892631530762,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 32,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 2,
+            "activation": "hardswish",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 2,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 32, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 5, \"expansion\": 2, \"activation\": \"hardswish\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 2, \"channels\": 128, \"kernel\": 3, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 371594,
+        "size_mb": 1.4969511032104492,
+        "flops": 100206080,
+        "cpu_latency_ms": 4.662798999561346,
+        "cpu_latency_mean_ms": 4.7206073333654786,
+        "cpu_latency_p90_ms": 5.03261000085331,
+        "peak_mem_mb": 2.9600753784179688,
+        "peak_act_mem_mb": 1.5081787109375
+      }
+    },
+    {
+      "trial": 31,
+      "status": "completed",
+      "score": 69.69102599665756,
+      "val_top1": 70.98,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 2.640810500452062,
+      "size_mb": 0.2326498031616211,
+      "peak_mem_mb": 0.7393646240234375,
+      "params": 51098,
+      "mflops": 14.276096,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "",
+      "duration_s": 22.519304275512695,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 64,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"dws\", \"depth\": 3, \"channels\": 48, \"kernel\": 3, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 64, \"kernel\": 3, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 51098,
+        "size_mb": 0.2326498031616211,
+        "flops": 14276096,
+        "cpu_latency_ms": 2.640810500452062,
+        "cpu_latency_mean_ms": 2.9027844330509347,
+        "cpu_latency_p90_ms": 3.7912289990345016,
+        "peak_mem_mb": 0.7393646240234375,
+        "peak_act_mem_mb": 0.5361328125
+      }
+    },
+    {
+      "trial": 32,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.411666000531113,
+      "size_mb": 0.7061872482299805,
+      "peak_mem_mb": 2.1615982055664062,
+      "params": 170386,
+      "mflops": 80.018432,
+      "resolution": 24,
+      "num_stages": 2,
+      "total_blocks": 6,
+      "violations": "latency 6.41ms > 5.0ms",
+      "duration_s": 0.7513535022735596,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "hardswish",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 7, \"expansion\": 6, \"activation\": \"hardswish\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 170386,
+        "size_mb": 0.7061872482299805,
+        "flops": 80018432,
+        "cpu_latency_ms": 6.411666000531113,
+        "cpu_latency_mean_ms": 6.346416633459739,
+        "cpu_latency_p90_ms": 6.922017000761116,
+        "peak_mem_mb": 2.1615982055664062,
+        "peak_act_mem_mb": 1.49029541015625
+      }
+    },
+    {
+      "trial": 33,
+      "status": "completed",
+      "score": 76.5446667873225,
+      "val_top1": 79.48,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 4.869244000474282,
+      "size_mb": 0.987635612487793,
+      "peak_mem_mb": 2.4379959106445312,
+      "params": 241618,
+      "mflops": 94.65344,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "",
+      "duration_s": 56.668853521347046,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 5, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 5, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 1, \"channels\": 128, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 241618,
+        "size_mb": 0.987635612487793,
+        "flops": 94653440,
+        "cpu_latency_ms": 4.869244000474282,
+        "cpu_latency_mean_ms": 4.977763066866221,
+        "cpu_latency_p90_ms": 5.356891999326763,
+        "peak_mem_mb": 2.4379959106445312,
+        "peak_act_mem_mb": 1.49212646484375
+      }
+    },
+    {
+      "trial": 34,
+      "status": "pruned_early",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 8,
+      "cpu_latency_ms": 2.9274369999257033,
+      "size_mb": 0.4573965072631836,
+      "peak_mem_mb": 0.8503875732421875,
+      "params": 108290,
+      "mflops": 18.8288,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "",
+      "duration_s": 15.472107172012329,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 16,
+            "kernel": 5,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 16, \"kernel\": 5, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 48, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 1, \"channels\": 128, \"kernel\": 3, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 108290,
+        "size_mb": 0.4573965072631836,
+        "flops": 18828800,
+        "cpu_latency_ms": 2.9274369999257033,
+        "cpu_latency_mean_ms": 2.92191140003221,
+        "cpu_latency_p90_ms": 3.1336380016000476,
+        "peak_mem_mb": 0.8503875732421875,
+        "peak_act_mem_mb": 0.42938232421875
+      }
+    },
+    {
+      "trial": 35,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 5.693439499736996,
+      "size_mb": 1.1540822982788086,
+      "peak_mem_mb": 2.5958709716796875,
+      "params": 280978,
+      "mflops": 107.02592,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 9,
+      "violations": "latency 5.69ms > 5.0ms; size 1.15MB > 1.0MB",
+      "duration_s": 0.7527966499328613,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "relu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "hardswish",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 3, \"expansion\": 2, \"activation\": \"relu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 128, \"kernel\": 3, \"expansion\": 4, \"activation\": \"hardswish\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 280978,
+        "size_mb": 1.1540822982788086,
+        "flops": 107025920,
+        "cpu_latency_ms": 5.693439499736996,
+        "cpu_latency_mean_ms": 5.725928633364674,
+        "cpu_latency_p90_ms": 6.0650559989881,
+        "peak_mem_mb": 2.5958709716796875,
+        "peak_act_mem_mb": 1.49212646484375
+      }
+    },
+    {
+      "trial": 36,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 5.318073499438469,
+      "size_mb": 2.98868465423584,
+      "peak_mem_mb": 4.1400146484375,
+      "params": 765234,
+      "mflops": 138.351104,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 9,
+      "violations": "latency 5.32ms > 5.0ms; size 2.99MB > 1.0MB",
+      "duration_s": 0.6912152767181396,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 24,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 96,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 24, \"kernel\": 7, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 96, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 3, \"channels\": 128, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 765234,
+        "size_mb": 2.98868465423584,
+        "flops": 138351104,
+        "cpu_latency_ms": 5.318073499438469,
+        "cpu_latency_mean_ms": 5.402866633388233,
+        "cpu_latency_p90_ms": 5.853557999216719,
+        "peak_mem_mb": 4.1400146484375,
+        "peak_act_mem_mb": 1.19091796875
+      }
+    },
+    {
+      "trial": 37,
+      "status": "completed",
+      "score": 70.35690722920233,
+      "val_top1": 71.78,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 2.3493765002058353,
+      "size_mb": 0.48334217071533203,
+      "peak_mem_mb": 1.9323806762695312,
+      "params": 118698,
+      "mflops": 35.514368,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 5,
+      "violations": "",
+      "duration_s": 49.10427784919739,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 16,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 16, \"stem_kernel\": 3, \"stages\": [{\"block\": \"dws\", \"depth\": 3, \"channels\": 48, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 32, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 1, \"channels\": 128, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 118698,
+        "size_mb": 0.48334217071533203,
+        "flops": 35514368,
+        "cpu_latency_ms": 2.3493765002058353,
+        "cpu_latency_mean_ms": 2.4018671333275656,
+        "cpu_latency_p90_ms": 2.5590929999452783,
+        "peak_mem_mb": 1.9323806762695312,
+        "peak_act_mem_mb": 1.4698486328125
+      }
+    },
+    {
+      "trial": 38,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 9.467516000768228,
+      "size_mb": 1.9615507125854492,
+      "peak_mem_mb": 4.044212341308594,
+      "params": 491090,
+      "mflops": 132.153856,
+      "resolution": 24,
+      "num_stages": 4,
+      "total_blocks": 8,
+      "violations": "latency 9.47ms > 5.0ms; size 1.96MB > 1.0MB",
+      "duration_s": 1.0676443576812744,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 6,
+            "activation": "hardswish",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "gelu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 512,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 3, \"expansion\": 6, \"activation\": \"hardswish\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 128, \"kernel\": 3, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 128, \"kernel\": 7, \"expansion\": 6, \"activation\": \"gelu\", \"stride\": 2}], \"head_channels\": 512, \"dropout\": 0.2}",
+      "hw": {
+        "params": 491090,
+        "size_mb": 1.9615507125854492,
+        "flops": 132153856,
+        "cpu_latency_ms": 9.467516000768228,
+        "cpu_latency_mean_ms": 9.704768666839906,
+        "cpu_latency_p90_ms": 10.843838999790023,
+        "peak_mem_mb": 4.044212341308594,
+        "peak_act_mem_mb": 2.12786865234375
+      }
+    },
+    {
+      "trial": 39,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 5.39600799947948,
+      "size_mb": 0.6795530319213867,
+      "peak_mem_mb": 1.6751022338867188,
+      "params": 162402,
+      "mflops": 68.512,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "latency 5.40ms > 5.0ms",
+      "duration_s": 0.8624699115753174,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "relu6",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 0,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 3, \"expansion\": 4, \"activation\": \"relu6\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 128, \"kernel\": 7, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 0, \"dropout\": 0.1}",
+      "hw": {
+        "params": 162402,
+        "size_mb": 0.6795530319213867,
+        "flops": 68512000,
+        "cpu_latency_ms": 5.39600799947948,
+        "cpu_latency_mean_ms": 5.563799099885121,
+        "cpu_latency_p90_ms": 5.780026000138605,
+        "peak_mem_mb": 1.6751022338867188,
+        "peak_act_mem_mb": 1.03387451171875
+      }
+    },
+    {
+      "trial": 40,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 4.582078999192163,
+      "size_mb": 2.346249580383301,
+      "peak_mem_mb": 3.1732864379882812,
+      "params": 605394,
+      "mflops": 189.220864,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "size 2.35MB > 1.0MB",
+      "duration_s": 0.6123325824737549,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "conv",
+            "depth": 3,
+            "channels": 64,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 128,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"conv\", \"depth\": 3, \"channels\": 64, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 128, \"kernel\": 3, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 2}], \"head_channels\": 128, \"dropout\": 0.1}",
+      "hw": {
+        "params": 605394,
+        "size_mb": 2.346249580383301,
+        "flops": 189220864,
+        "cpu_latency_ms": 4.582078999192163,
+        "cpu_latency_mean_ms": 4.663251666655317,
+        "cpu_latency_p90_ms": 4.85650600057852,
+        "peak_mem_mb": 3.1732864379882812,
+        "peak_act_mem_mb": 0.85491943359375
+      }
+    },
+    {
+      "trial": 41,
+      "status": "completed",
+      "score": 70.02698614413035,
+      "val_top1": 71.66,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 2.2473720000562025,
+      "size_mb": 0.734065055847168,
+      "peak_mem_mb": 2.1454010009765625,
+      "params": 185938,
+      "mflops": 39.486464,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 3,
+      "violations": "",
+      "duration_s": 20.89758014678955,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 1,
+            "channels": 96,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"mbconv\", \"depth\": 1, \"channels\": 48, \"kernel\": 5, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 48, \"kernel\": 5, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 1, \"channels\": 96, \"kernel\": 5, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 185938,
+        "size_mb": 0.734065055847168,
+        "flops": 39486464,
+        "cpu_latency_ms": 2.2473720000562025,
+        "cpu_latency_mean_ms": 2.3225644667642578,
+        "cpu_latency_p90_ms": 2.602231999844662,
+        "peak_mem_mb": 2.1454010009765625,
+        "peak_act_mem_mb": 1.42730712890625
+      }
+    },
+    {
+      "trial": 42,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 5.7666354996399605,
+      "size_mb": 1.0225286483764648,
+      "peak_mem_mb": 2.46112060546875,
+      "params": 246418,
+      "mflops": 86.062336,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 11,
+      "violations": "latency 5.77ms > 5.0ms; size 1.02MB > 1.0MB",
+      "duration_s": 0.7059056758880615,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 4,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 512,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 5, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 5, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 4, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 512, \"dropout\": 0.1}",
+      "hw": {
+        "params": 246418,
+        "size_mb": 1.0225286483764648,
+        "flops": 86062336,
+        "cpu_latency_ms": 5.7666354996399605,
+        "cpu_latency_mean_ms": 5.855529699753485,
+        "cpu_latency_p90_ms": 6.302732999756699,
+        "peak_mem_mb": 2.46112060546875,
+        "peak_act_mem_mb": 1.49212646484375
+      }
+    },
+    {
+      "trial": 43,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.442941499699373,
+      "size_mb": 1.3739004135131836,
+      "peak_mem_mb": 3.9811859130859375,
+      "params": 344722,
+      "mflops": 159.814656,
+      "resolution": 32,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "latency 6.44ms > 5.0ms; size 1.37MB > 1.0MB",
+      "duration_s": 0.7321066856384277,
+      "arch": {
+        "resolution": 32,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "relu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "gelu",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 32, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 3, \"expansion\": 2, \"activation\": \"relu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 7, \"expansion\": 6, \"activation\": \"gelu\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 1, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 344722,
+        "size_mb": 1.3739004135131836,
+        "flops": 159814656,
+        "cpu_latency_ms": 6.442941499699373,
+        "cpu_latency_mean_ms": 6.672857299963653,
+        "cpu_latency_p90_ms": 7.0087429994600825,
+        "peak_mem_mb": 3.9811859130859375,
+        "peak_act_mem_mb": 2.64385986328125
+      }
+    },
+    {
+      "trial": 44,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 7.294157500837173,
+      "size_mb": 2.248347282409668,
+      "peak_mem_mb": 3.7427139282226562,
+      "params": 563690,
+      "mflops": 187.839488,
+      "resolution": 32,
+      "num_stages": 3,
+      "total_blocks": 10,
+      "violations": "latency 7.29ms > 5.0ms; size 2.25MB > 1.0MB",
+      "duration_s": 0.8848121166229248,
+      "arch": {
+        "resolution": 32,
+        "stem_channels": 32,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 6,
+            "activation": "relu6",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 32, \"stem_channels\": 32, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 7, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 128, \"kernel\": 3, \"expansion\": 6, \"activation\": \"relu6\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 563690,
+        "size_mb": 2.248347282409668,
+        "flops": 187839488,
+        "cpu_latency_ms": 7.294157500837173,
+        "cpu_latency_mean_ms": 8.035173900073763,
+        "cpu_latency_p90_ms": 11.651947999780532,
+        "peak_mem_mb": 3.7427139282226562,
+        "peak_act_mem_mb": 1.5496826171875
+      }
+    },
+    {
+      "trial": 45,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 9.465559999625839,
+      "size_mb": 1.9456815719604492,
+      "peak_mem_mb": 3.3332748413085938,
+      "params": 487922,
+      "mflops": 172.037632,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "latency 9.47ms > 5.0ms; size 1.95MB > 1.0MB",
+      "duration_s": 0.971743106842041,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 96,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 160,
+            "kernel": 5,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 128,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 7, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 96, \"kernel\": 5, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 160, \"kernel\": 5, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 128, \"dropout\": 0.2}",
+      "hw": {
+        "params": 487922,
+        "size_mb": 1.9456815719604492,
+        "flops": 172037632,
+        "cpu_latency_ms": 9.465559999625839,
+        "cpu_latency_mean_ms": 10.003789633265114,
+        "cpu_latency_p90_ms": 12.215480999657302,
+        "peak_mem_mb": 3.3332748413085938,
+        "peak_act_mem_mb": 1.43280029296875
+      }
+    },
+    {
+      "trial": 46,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 5.39843450042099,
+      "size_mb": 0.30237865447998047,
+      "peak_mem_mb": 1.0651016235351562,
+      "params": 67426,
+      "mflops": 60.558848,
+      "resolution": 24,
+      "num_stages": 2,
+      "total_blocks": 7,
+      "violations": "latency 5.40ms > 5.0ms",
+      "duration_s": 0.7482078075408936,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 5, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 7, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 32, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 67426,
+        "size_mb": 0.30237865447998047,
+        "flops": 60558848,
+        "cpu_latency_ms": 5.39843450042099,
+        "cpu_latency_mean_ms": 5.507357166728373,
+        "cpu_latency_p90_ms": 5.85766699987289,
+        "peak_mem_mb": 1.0651016235351562,
+        "peak_act_mem_mb": 0.79742431640625
+      }
+    },
+    {
+      "trial": 47,
+      "status": "pruned_early",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 6,
+      "cpu_latency_ms": 4.047651499604399,
+      "size_mb": 0.33579158782958984,
+      "peak_mem_mb": 0.7252197265625,
+      "params": 74994,
+      "mflops": 18.259456,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "",
+      "duration_s": 14.78745412826538,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 16,
+            "kernel": 5,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 160,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "relu6",
+            "stride": 2
+          }
+        ],
+        "head_channels": 128,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 16, \"kernel\": 5, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 160, \"kernel\": 3, \"expansion\": 4, \"activation\": \"relu6\", \"stride\": 2}], \"head_channels\": 128, \"dropout\": 0.2}",
+      "hw": {
+        "params": 74994,
+        "size_mb": 0.33579158782958984,
+        "flops": 18259456,
+        "cpu_latency_ms": 4.047651499604399,
+        "cpu_latency_mean_ms": 4.076386999804527,
+        "cpu_latency_p90_ms": 4.302294999433798,
+        "peak_mem_mb": 0.7252197265625,
+        "peak_act_mem_mb": 0.42938232421875
+      }
+    },
+    {
+      "trial": 48,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 9.724079500301741,
+      "size_mb": 0.8142232894897461,
+      "peak_mem_mb": 2.2125091552734375,
+      "params": 194986,
+      "mflops": 118.88576,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "latency 9.72ms > 5.0ms",
+      "duration_s": 0.9215826988220215,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 16,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "relu6",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 16, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 32, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 5, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 64, \"kernel\": 5, \"expansion\": 1, \"activation\": \"relu6\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 194986,
+        "size_mb": 0.8142232894897461,
+        "flops": 118885760,
+        "cpu_latency_ms": 9.724079500301741,
+        "cpu_latency_mean_ms": 10.070149733110156,
+        "cpu_latency_p90_ms": 12.071514998751809,
+        "peak_mem_mb": 2.2125091552734375,
+        "peak_act_mem_mb": 1.4415283203125
+      }
+    },
+    {
+      "trial": 49,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 3.887004500029434,
+      "size_mb": 4.559279441833496,
+      "peak_mem_mb": 5.173980712890625,
+      "params": 1185642,
+      "mflops": 100.173824,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 6,
+      "violations": "size 4.56MB > 1.0MB",
+      "duration_s": 0.6115190982818604,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 2,
+            "channels": 128,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"dws\", \"depth\": 1, \"channels\": 48, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 7, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 2, \"channels\": 128, \"kernel\": 7, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 1185642,
+        "size_mb": 4.559279441833496,
+        "flops": 100173824,
+        "cpu_latency_ms": 3.887004500029434,
+        "cpu_latency_mean_ms": 4.081878700223267,
+        "cpu_latency_p90_ms": 4.93307600117987,
+        "peak_mem_mb": 5.173980712890625,
+        "peak_act_mem_mb": 0.640869140625
+      }
+    },
+    {
+      "trial": 50,
+      "status": "completed",
+      "score": 72.37217144049355,
+      "val_top1": 74.8,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 4.7980875006032875,
+      "size_mb": 0.5085935592651367,
+      "peak_mem_mb": 1.9472274780273438,
+      "params": 119114,
+      "mflops": 80.882432,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "",
+      "duration_s": 49.28625845909119,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 16,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 16, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 3, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 119114,
+        "size_mb": 0.5085935592651367,
+        "flops": 80882432,
+        "cpu_latency_ms": 4.7980875006032875,
+        "cpu_latency_mean_ms": 4.900569766323315,
+        "cpu_latency_p90_ms": 5.417510999905062,
+        "peak_mem_mb": 1.9472274780273438,
+        "peak_act_mem_mb": 1.4765625
+      }
+    },
+    {
+      "trial": 51,
+      "status": "completed",
+      "score": 71.38798310093523,
+      "val_top1": 73.38,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 4.0456249998896965,
+      "size_mb": 0.3737668991088867,
+      "peak_mem_mb": 1.3520736694335938,
+      "params": 84314,
+      "mflops": 41.807104,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "",
+      "duration_s": 35.376991271972656,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 16,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 32,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          }
+        ],
+        "head_channels": 512,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 16, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 32, \"kernel\": 3, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 64, \"kernel\": 5, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}], \"head_channels\": 512, \"dropout\": 0.1}",
+      "hw": {
+        "params": 84314,
+        "size_mb": 0.3737668991088867,
+        "flops": 41807104,
+        "cpu_latency_ms": 4.0456249998896965,
+        "cpu_latency_mean_ms": 4.069782833236483,
+        "cpu_latency_p90_ms": 4.396786000143038,
+        "peak_mem_mb": 1.3520736694335938,
+        "peak_act_mem_mb": 1.0162353515625
+      }
+    },
+    {
+      "trial": 52,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 5.196850000174891,
+      "size_mb": 0.9680318832397461,
+      "peak_mem_mb": 1.5979156494140625,
+      "params": 234610,
+      "mflops": 60.762624,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "latency 5.20ms > 5.0ms",
+      "duration_s": 0.7208399772644043,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 4,
+            "activation": "gelu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "gelu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 5, \"expansion\": 4, \"activation\": \"gelu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 5, \"expansion\": 6, \"activation\": \"gelu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 234610,
+        "size_mb": 0.9680318832397461,
+        "flops": 60762624,
+        "cpu_latency_ms": 5.196850000174891,
+        "cpu_latency_mean_ms": 5.182437666735495,
+        "cpu_latency_p90_ms": 5.4435120000562165,
+        "peak_mem_mb": 1.5979156494140625,
+        "peak_act_mem_mb": 0.67327880859375
+      }
+    },
+    {
+      "trial": 53,
+      "status": "pruned_early",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 6,
+      "cpu_latency_ms": 2.7768264999394887,
+      "size_mb": 0.3921823501586914,
+      "peak_mem_mb": 1.0962142944335938,
+      "params": 94474,
+      "mflops": 37.797632,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "",
+      "duration_s": 8.947617769241333,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 16,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 2,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 2,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "gelu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 16, \"stem_kernel\": 3, \"stages\": [{\"block\": \"conv\", \"depth\": 2, \"channels\": 48, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 32, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 2, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"gelu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 94474,
+        "size_mb": 0.3921823501586914,
+        "flops": 37797632,
+        "cpu_latency_ms": 2.7768264999394887,
+        "cpu_latency_mean_ms": 2.8690035332450257,
+        "cpu_latency_p90_ms": 3.12896800096496,
+        "peak_mem_mb": 1.0962142944335938,
+        "peak_act_mem_mb": 0.7281494140625
+      }
+    },
+    {
+      "trial": 54,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 8.135858499372262,
+      "size_mb": 0.5771970748901367,
+      "peak_mem_mb": 2.0338058471679688,
+      "params": 136978,
+      "mflops": 114.198272,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "latency 8.14ms > 5.0ms",
+      "duration_s": 0.9162580966949463,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 96,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 7, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 32, \"kernel\": 5, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 96, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 136978,
+        "size_mb": 0.5771970748901367,
+        "flops": 114198272,
+        "cpu_latency_ms": 8.135858499372262,
+        "cpu_latency_mean_ms": 8.40332919985182,
+        "cpu_latency_p90_ms": 9.288702998674125,
+        "peak_mem_mb": 2.0338058471679688,
+        "peak_act_mem_mb": 1.49468994140625
+      }
+    },
+    {
+      "trial": 55,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.974227500904817,
+      "size_mb": 0.25629711151123047,
+      "peak_mem_mb": 1.7083206176757812,
+      "params": 55466,
+      "mflops": 76.444672,
+      "resolution": 32,
+      "num_stages": 2,
+      "total_blocks": 7,
+      "violations": "latency 6.97ms > 5.0ms",
+      "duration_s": 0.895925760269165,
+      "arch": {
+        "resolution": 32,
+        "stem_channels": 16,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 32, \"stem_channels\": 16, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 1, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 55466,
+        "size_mb": 0.25629711151123047,
+        "flops": 76444672,
+        "cpu_latency_ms": 6.974227500904817,
+        "cpu_latency_mean_ms": 7.111783333554437,
+        "cpu_latency_p90_ms": 7.713828999840189,
+        "peak_mem_mb": 1.7083206176757812,
+        "peak_act_mem_mb": 1.486572265625
+      }
+    },
+    {
+      "trial": 56,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 7.25430850070552,
+      "size_mb": 2.356875419616699,
+      "peak_mem_mb": 3.8089218139648438,
+      "params": 593410,
+      "mflops": 211.922432,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "latency 7.25ms > 5.0ms; size 2.36MB > 1.0MB",
+      "duration_s": 0.7958438396453857,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "hardswish",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 96,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "relu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 3, \"expansion\": 4, \"activation\": \"hardswish\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 96, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 128, \"kernel\": 5, \"expansion\": 6, \"activation\": \"relu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 593410,
+        "size_mb": 2.356875419616699,
+        "flops": 211922432,
+        "cpu_latency_ms": 7.25430850070552,
+        "cpu_latency_mean_ms": 7.2262559333466925,
+        "cpu_latency_p90_ms": 7.6360860002751,
+        "peak_mem_mb": 3.8089218139648438,
+        "peak_act_mem_mb": 1.49725341796875
+      }
+    },
+    {
+      "trial": 57,
+      "status": "completed",
+      "score": 71.22640751279542,
+      "val_top1": 72.9,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 3.119406499536126,
+      "size_mb": 0.4258298873901367,
+      "peak_mem_mb": 1.2407150268554688,
+      "params": 98514,
+      "mflops": 40.041728,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "",
+      "duration_s": 37.54520010948181,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 2,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "relu6",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 2, \"channels\": 48, \"kernel\": 7, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 4, \"channels\": 32, \"kernel\": 7, \"expansion\": 2, \"activation\": \"relu6\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 128, \"kernel\": 7, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 98514,
+        "size_mb": 0.4258298873901367,
+        "flops": 40041728,
+        "cpu_latency_ms": 3.119406499536126,
+        "cpu_latency_mean_ms": 3.7203594998572953,
+        "cpu_latency_p90_ms": 5.559293000260368,
+        "peak_mem_mb": 1.2407150268554688,
+        "peak_act_mem_mb": 0.85308837890625
+      }
+    },
+    {
+      "trial": 58,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.175090499709768,
+      "size_mb": 0.42304515838623047,
+      "peak_mem_mb": 1.8650588989257812,
+      "params": 97834,
+      "mflops": 78.808832,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 7,
+      "violations": "latency 6.18ms > 5.0ms",
+      "duration_s": 0.8045792579650879,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 16,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "relu6",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 2,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 16, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 3, \"expansion\": 4, \"activation\": \"relu6\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 2, \"channels\": 32, \"kernel\": 7, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 64, \"kernel\": 5, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 97834,
+        "size_mb": 0.42304515838623047,
+        "flops": 78808832,
+        "cpu_latency_ms": 6.175090499709768,
+        "cpu_latency_mean_ms": 6.359420000201983,
+        "cpu_latency_p90_ms": 6.94147600006545,
+        "peak_mem_mb": 1.8650588989257812,
+        "peak_act_mem_mb": 1.4765625
+      }
+    },
+    {
+      "trial": 59,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 10.342311500608048,
+      "size_mb": 4.581969261169434,
+      "peak_mem_mb": 5.5873870849609375,
+      "params": 1170674,
+      "mflops": 118.988288,
+      "resolution": 24,
+      "num_stages": 4,
+      "total_blocks": 13,
+      "violations": "latency 10.34ms > 5.0ms; size 4.58MB > 1.0MB",
+      "duration_s": 1.1701552867889404,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 4,
+            "activation": "relu6",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 2,
+            "channels": 192,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 5, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 5, \"expansion\": 4, \"activation\": \"relu6\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 4, \"channels\": 128, \"kernel\": 3, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 2, \"channels\": 192, \"kernel\": 3, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 1170674,
+        "size_mb": 4.581969261169434,
+        "flops": 118988288,
+        "cpu_latency_ms": 10.342311500608048,
+        "cpu_latency_mean_ms": 10.712639200331372,
+        "cpu_latency_p90_ms": 12.531410000519827,
+        "peak_mem_mb": 5.5873870849609375,
+        "peak_act_mem_mb": 1.06951904296875
+      }
+    },
+    {
+      "trial": 60,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.645406499956152,
+      "size_mb": 0.5103254318237305,
+      "peak_mem_mb": 1.9322280883789062,
+      "params": 119250,
+      "mflops": 70.240256,
+      "resolution": 24,
+      "num_stages": 2,
+      "total_blocks": 6,
+      "violations": "latency 6.65ms > 5.0ms",
+      "duration_s": 0.8528966903686523,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 3,
+            "expansion": 6,
+            "activation": "relu6",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "gelu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 3, \"expansion\": 6, \"activation\": \"relu6\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 6, \"activation\": \"gelu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 119250,
+        "size_mb": 0.5103254318237305,
+        "flops": 70240256,
+        "cpu_latency_ms": 6.645406499956152,
+        "cpu_latency_mean_ms": 6.916902766837059,
+        "cpu_latency_p90_ms": 8.41238100110786,
+        "peak_mem_mb": 1.9322280883789062,
+        "peak_act_mem_mb": 1.45672607421875
+      }
+    },
+    {
+      "trial": 61,
+      "status": "pruned_early",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 6,
+      "cpu_latency_ms": 3.911737499947776,
+      "size_mb": 0.3513498306274414,
+      "peak_mem_mb": 2.8485946655273438,
+      "params": 83866,
+      "mflops": 42.525952,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "",
+      "duration_s": 9.302312135696411,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 16,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "conv",
+            "depth": 4,
+            "channels": 32,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 64,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          }
+        ],
+        "head_channels": 512,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 16, \"stem_kernel\": 3, \"stages\": [{\"block\": \"conv\", \"depth\": 4, \"channels\": 32, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 64, \"kernel\": 7, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}], \"head_channels\": 512, \"dropout\": 0.1}",
+      "hw": {
+        "params": 83866,
+        "size_mb": 0.3513498306274414,
+        "flops": 42525952,
+        "cpu_latency_ms": 3.911737499947776,
+        "cpu_latency_mean_ms": 3.4813051664968953,
+        "cpu_latency_p90_ms": 4.246380000040517,
+        "peak_mem_mb": 2.8485946655273438,
+        "peak_act_mem_mb": 2.5213623046875
+      }
+    },
+    {
+      "trial": 62,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.236930499653681,
+      "size_mb": 0.7405805587768555,
+      "peak_mem_mb": 2.1861343383789062,
+      "params": 174786,
+      "mflops": 93.913856,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 10,
+      "violations": "latency 6.24ms > 5.0ms",
+      "duration_s": 0.7673463821411133,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "gelu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "relu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 4,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 3, \"expansion\": 4, \"activation\": \"gelu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 6, \"activation\": \"relu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 4, \"channels\": 64, \"kernel\": 5, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 174786,
+        "size_mb": 0.7405805587768555,
+        "flops": 93913856,
+        "cpu_latency_ms": 6.236930499653681,
+        "cpu_latency_mean_ms": 6.350912433299527,
+        "cpu_latency_p90_ms": 6.6544410001370125,
+        "peak_mem_mb": 2.1861343383789062,
+        "peak_act_mem_mb": 1.49395751953125
+      }
+    },
+    {
+      "trial": 63,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.1414195006364025,
+      "size_mb": 0.6155004501342773,
+      "peak_mem_mb": 2.076385498046875,
+      "params": 147154,
+      "mflops": 89.661824,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 6,
+      "violations": "latency 6.14ms > 5.0ms",
+      "duration_s": 0.8736639022827148,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "relu6",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 2,
+            "channels": 48,
+            "kernel": 5,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 64,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 48, \"kernel\": 3, \"expansion\": 4, \"activation\": \"relu6\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 2, \"channels\": 48, \"kernel\": 5, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 64, \"kernel\": 5, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 147154,
+        "size_mb": 0.6155004501342773,
+        "flops": 89661824,
+        "cpu_latency_ms": 6.1414195006364025,
+        "cpu_latency_mean_ms": 6.408123333191422,
+        "cpu_latency_p90_ms": 7.193408000603085,
+        "peak_mem_mb": 2.076385498046875,
+        "peak_act_mem_mb": 1.49395751953125
+      }
+    },
+    {
+      "trial": 64,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.755753001016274,
+      "size_mb": 0.597865104675293,
+      "peak_mem_mb": 1.5149307250976562,
+      "params": 140570,
+      "mflops": 64.443392,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "latency 6.76ms > 5.0ms",
+      "duration_s": 0.8958613872528076,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 16,
+        "stem_kernel": 5,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 32,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "relu",
+            "stride": 2
+          },
+          {
+            "block": "conv",
+            "depth": 1,
+            "channels": 64,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 16, \"stem_kernel\": 5, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 32, \"kernel\": 3, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 6, \"activation\": \"relu\", \"stride\": 2}, {\"block\": \"conv\", \"depth\": 1, \"channels\": 64, \"kernel\": 3, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 140570,
+        "size_mb": 0.597865104675293,
+        "flops": 64443392,
+        "cpu_latency_ms": 6.755753001016274,
+        "cpu_latency_mean_ms": 6.868954433290734,
+        "cpu_latency_p90_ms": 7.291947998965043,
+        "peak_mem_mb": 1.5149307250976562,
+        "peak_act_mem_mb": 0.9586181640625
+      }
+    },
+    {
+      "trial": 65,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 6.780246500966314,
+      "size_mb": 0.5066404342651367,
+      "peak_mem_mb": 1.9452743530273438,
+      "params": 118602,
+      "mflops": 80.845568,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 8,
+      "violations": "latency 6.78ms > 5.0ms",
+      "duration_s": 0.8869898319244385,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 16,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "hardswish",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 3,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.0
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 16, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 3, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 32, \"kernel\": 7, \"expansion\": 1, \"activation\": \"hardswish\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 128, \"kernel\": 3, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.0}",
+      "hw": {
+        "params": 118602,
+        "size_mb": 0.5066404342651367,
+        "flops": 80845568,
+        "cpu_latency_ms": 6.780246500966314,
+        "cpu_latency_mean_ms": 6.932756300193432,
+        "cpu_latency_p90_ms": 7.345953999902122,
+        "peak_mem_mb": 1.9452743530273438,
+        "peak_act_mem_mb": 1.4765625
+      }
+    },
+    {
+      "trial": 66,
+      "status": "pruned_early",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 6,
+      "cpu_latency_ms": 4.18297550004354,
+      "size_mb": 0.46003246307373047,
+      "peak_mem_mb": 0.9051284790039062,
+      "params": 107858,
+      "mflops": 32.074752,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 6,
+      "violations": "",
+      "duration_s": 20.62401556968689,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 4,
+            "channels": 48,
+            "kernel": 7,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 32,
+            "kernel": 5,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 96,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 4, \"channels\": 48, \"kernel\": 7, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 32, \"kernel\": 5, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 1, \"channels\": 96, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 107858,
+        "size_mb": 0.46003246307373047,
+        "flops": 32074752,
+        "cpu_latency_ms": 4.18297550004354,
+        "cpu_latency_mean_ms": 4.247042133344318,
+        "cpu_latency_p90_ms": 4.5841619994462235,
+        "peak_mem_mb": 0.9051284790039062,
+        "peak_act_mem_mb": 0.47991943359375
+      }
+    },
+    {
+      "trial": 67,
+      "status": "rejected_constraints",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 0,
+      "cpu_latency_ms": 4.519366999375052,
+      "size_mb": 1.9769315719604492,
+      "peak_mem_mb": 2.5097579956054688,
+      "params": 497482,
+      "mflops": 54.011392,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 9,
+      "violations": "size 1.98MB > 1.0MB",
+      "duration_s": 0.6882271766662598,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 16,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 16,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "hardswish",
+            "stride": 1
+          },
+          {
+            "block": "dws",
+            "depth": 3,
+            "channels": 96,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "mbconv",
+            "depth": 3,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 4,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 512,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 16, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 3, \"channels\": 16, \"kernel\": 3, \"expansion\": 2, \"activation\": \"hardswish\", \"stride\": 1}, {\"block\": \"dws\", \"depth\": 3, \"channels\": 96, \"kernel\": 7, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"mbconv\", \"depth\": 3, \"channels\": 128, \"kernel\": 5, \"expansion\": 4, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 512, \"dropout\": 0.1}",
+      "hw": {
+        "params": 497482,
+        "size_mb": 1.9769315719604492,
+        "flops": 54011392,
+        "cpu_latency_ms": 4.519366999375052,
+        "cpu_latency_mean_ms": 4.545628833208563,
+        "cpu_latency_p90_ms": 4.78861999908986,
+        "peak_mem_mb": 2.5097579956054688,
+        "peak_act_mem_mb": 0.5777587890625
+      }
+    },
+    {
+      "trial": 68,
+      "status": "completed",
+      "score": 74.6856254096044,
+      "val_top1": 76.22,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 2.7292474997011595,
+      "size_mb": 0.4426755905151367,
+      "peak_mem_mb": 1.9065399169921875,
+      "params": 106834,
+      "mflops": 36.83456,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 4,
+      "violations": "",
+      "duration_s": 48.75010085105896,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 2,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "relu6",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 1, \"channels\": 48, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 2, \"channels\": 32, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"relu6\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.2}",
+      "hw": {
+        "params": 106834,
+        "size_mb": 0.4426755905151367,
+        "flops": 36834560,
+        "cpu_latency_ms": 2.7292474997011595,
+        "cpu_latency_mean_ms": 2.8780172665695622,
+        "cpu_latency_p90_ms": 3.7193210009718314,
+        "peak_mem_mb": 1.9065399169921875,
+        "peak_act_mem_mb": 1.48663330078125
+      }
+    },
+    {
+      "trial": 69,
+      "status": "pruned_early",
+      "score": null,
+      "val_top1": null,
+      "epochs_trained": 6,
+      "cpu_latency_ms": 1.7357999995510909,
+      "size_mb": 0.30725574493408203,
+      "peak_mem_mb": 0.9487686157226562,
+      "params": 72274,
+      "mflops": 15.322624,
+      "resolution": 16,
+      "num_stages": 3,
+      "total_blocks": 4,
+      "violations": "",
+      "duration_s": 17.618635892868042,
+      "arch": {
+        "resolution": 16,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 48,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 2,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 1,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "relu6",
+            "stride": 2
+          }
+        ],
+        "head_channels": 0,
+        "dropout": 0.2
+      },
+      "arch_json": "{\"resolution\": 16, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 1, \"channels\": 48, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 2, \"channels\": 32, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 1, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"relu6\", \"stride\": 2}], \"head_channels\": 0, \"dropout\": 0.2}",
+      "hw": {
+        "params": 72274,
+        "size_mb": 0.30725574493408203,
+        "flops": 15322624,
+        "cpu_latency_ms": 1.7357999995510909,
+        "cpu_latency_mean_ms": 1.7417346334089718,
+        "cpu_latency_p90_ms": 1.8882519998442149,
+        "peak_mem_mb": 0.9487686157226562,
+        "peak_act_mem_mb": 0.66265869140625
+      }
+    },
+    {
+      "trial": 70,
+      "status": "completed",
+      "score": 75.03906536794966,
+      "val_top1": 76.5,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 2.5033140009327326,
+      "size_mb": 0.4596090316772461,
+      "peak_mem_mb": 1.46221923828125,
+      "params": 110290,
+      "mflops": 26.273024,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 5,
+      "violations": "",
+      "duration_s": 40.56387257575989,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 24,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 32,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "mbconv",
+            "depth": 2,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 6,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 2,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 24, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 1, \"channels\": 32, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"mbconv\", \"depth\": 2, \"channels\": 32, \"kernel\": 7, \"expansion\": 6, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 2, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 110290,
+        "size_mb": 0.4596090316772461,
+        "flops": 26273024,
+        "cpu_latency_ms": 2.5033140009327326,
+        "cpu_latency_mean_ms": 2.52449100001589,
+        "cpu_latency_p90_ms": 2.681957999811857,
+        "peak_mem_mb": 1.46221923828125,
+        "peak_act_mem_mb": 1.02874755859375
+      }
+    },
+    {
+      "trial": 71,
+      "status": "completed",
+      "score": 73.13336455722455,
+      "val_top1": 74.6,
+      "epochs_trained": 10,
+      "cpu_latency_ms": 2.002867999181035,
+      "size_mb": 0.6654882431030273,
+      "peak_mem_mb": 1.1990966796875,
+      "params": 167562,
+      "mflops": 39.405824,
+      "resolution": 24,
+      "num_stages": 3,
+      "total_blocks": 5,
+      "violations": "",
+      "duration_s": 10.564305782318115,
+      "arch": {
+        "resolution": 24,
+        "stem_channels": 32,
+        "stem_kernel": 3,
+        "stages": [
+          {
+            "block": "mbconv",
+            "depth": 1,
+            "channels": 32,
+            "kernel": 3,
+            "expansion": 2,
+            "activation": "silu",
+            "stride": 1
+          },
+          {
+            "block": "conv",
+            "depth": 2,
+            "channels": 32,
+            "kernel": 7,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          },
+          {
+            "block": "dws",
+            "depth": 2,
+            "channels": 128,
+            "kernel": 5,
+            "expansion": 1,
+            "activation": "silu",
+            "stride": 2
+          }
+        ],
+        "head_channels": 256,
+        "dropout": 0.1
+      },
+      "arch_json": "{\"resolution\": 24, \"stem_channels\": 32, \"stem_kernel\": 3, \"stages\": [{\"block\": \"mbconv\", \"depth\": 1, \"channels\": 32, \"kernel\": 3, \"expansion\": 2, \"activation\": \"silu\", \"stride\": 1}, {\"block\": \"conv\", \"depth\": 2, \"channels\": 32, \"kernel\": 7, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}, {\"block\": \"dws\", \"depth\": 2, \"channels\": 128, \"kernel\": 5, \"expansion\": 1, \"activation\": \"silu\", \"stride\": 2}], \"head_channels\": 256, \"dropout\": 0.1}",
+      "hw": {
+        "params": 167562,
+        "size_mb": 0.6654882431030273,
+        "flops": 39405824,
+        "cpu_latency_ms": 2.002867999181035,
+        "cpu_latency_mean_ms": 2.0210278333252063,
+        "cpu_latency_p90_ms": 2.2237200009840308,
+        "peak_mem_mb": 1.1990966796875,
+        "peak_act_mem_mb": 0.552734375
+      }
+    }
+  ]
+}

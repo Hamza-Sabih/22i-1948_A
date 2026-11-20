@@ -1,0 +1,12 @@
+{
+  "model": "mobilenetv2",
+  "variant": "baseline",
+  "params": 2351972,
+  "size_mb": 9.19294261932373,
+  "test_top1": 72.55,
+  "test_top5": 93.13,
+  "best_epoch_top1": 72.55,
+  "epochs": 30,
+  "train_time_s": 636.6946485042572,
+  "kd": false
+}

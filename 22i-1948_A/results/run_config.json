@@ -1,0 +1,56 @@
+{
+  "roll": "22i-1948",
+  "section": "A",
+  "mode": "FULL",
+  "environment": {
+    "GPU": "Tesla T4",
+    "CPU (latency measurements)": "Intel(R) Xeon(R) CPU @ 2.00GHz (2 logical cores)",
+    "PyTorch / torchvision": "2.14.1+cu130 / 0.29.1+cu130",
+    "Python": "3.13.16",
+    "Mode": "FULL",
+    "ONNX Runtime / Optuna": "1.32.0 / 5.1.0"
+  },
+  "hyperparameters": {
+    "teacher": {
+      "epochs": 30,
+      "lr": 0.05,
+      "batch_size": 128,
+      "wd": 0.0005
+    },
+    "baseline": {
+      "epochs": 30,
+      "lr": 0.1,
+      "batch_size": 128,
+      "wd": 0.0005
+    },
+    "kd": {
+      "epochs": 30,
+      "lr": 0.1,
+      "batch_size": 128,
+      "wd": 0.0005,
+      "temperature": 4.0,
+      "alpha": 0.9,
+      "beta": 1.0,
+      "feat_loss": "fitnet"
+    },
+    "nas_search": {
+      "n_trials": 30,
+      "max_total_trials": 150,
+      "trial_epochs": 10,
+      "train_subset": 20000,
+      "max_latency_ms": 5.0,
+      "max_size_mb": 1.0,
+      "max_peak_mem_mb": 6.0,
+      "threads": 1
+    },
+    "nas_best": {
+      "epochs": 60,
+      "lr": 0.1,
+      "batch_size": 128
+    },
+    "benchmark": {
+      "threads": 1,
+      "runs": 100
+    }
+  }
+}

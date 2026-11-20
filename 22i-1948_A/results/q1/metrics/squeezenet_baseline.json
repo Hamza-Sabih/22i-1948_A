@@ -1,0 +1,12 @@
+{
+  "model": "squeezenet",
+  "variant": "baseline",
+  "params": 776740,
+  "size_mb": 3.028517723083496,
+  "test_top1": 64.26,
+  "test_top5": 89.22,
+  "best_epoch_top1": 64.26,
+  "epochs": 30,
+  "train_time_s": 195.47252488136292,
+  "kd": false
+}

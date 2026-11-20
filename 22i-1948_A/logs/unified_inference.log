@@ -1,0 +1,161 @@
+
+===== unified_inference | 2026-11-20 10:10:23 =====
+[samples] wrote 16 images to /content/drive/MyDrive/22i-1948_A/samples
+
+===== unified_inference | 2026-11-20 10:10:31 =====
+
+=== mobilenetv2_baseline (torch, cifar100, 32x32) ===
+  cifar100_0_mountain.png              -> road 0.88, sea 0.04, train 0.03
+  cifar100_1_forest.png                -> forest 0.64, rabbit 0.10, bottle 0.07
+  cifar100_2_seal.png                  -> otter 0.82, beaver 0.10, seal 0.06
+  cifar100_3_mushroom.png              -> mushroom 0.96, trout 0.02, house 0.01
+  cifar100_4_sea.png                   -> sea 0.93, cloud 0.06, plain 0.01
+  cifar100_5_tulip.png                 -> spider 0.82, bee 0.09, beetle 0.04
+  cifar100_6_camel.png                 -> crocodile 0.92, dinosaur 0.05, kangaroo 0.01
+  cifar100_7_butterfly.png             -> beetle 0.40, porcupine 0.17, shrew 0.07
+  top-1 correct on samples: 3/8
+
+=== squeezenet_baseline (torch, cifar100, 32x32) ===
+  cifar100_0_mountain.png              -> road 0.41, spider 0.13, seal 0.10
+  cifar100_1_forest.png                -> forest 0.84, palm_tree 0.06, willow_tree 0.03
+  cifar100_2_seal.png                  -> seal 0.23, otter 0.21, dolphin 0.19
+  cifar100_3_mushroom.png              -> mushroom 0.97, lamp 0.01, table 0.01
+  cifar100_4_sea.png                   -> sea 0.67, plain 0.25, cloud 0.08
+  cifar100_5_tulip.png                 -> bee 0.91, spider 0.07, beetle 0.00
+  cifar100_6_camel.png                 -> seal 0.26, camel 0.14, tractor 0.11
+  cifar100_7_butterfly.png             -> beetle 0.37, mouse 0.06, chimpanzee 0.05
+  top-1 correct on samples: 4/8
+
+=== efficientnet_lite0_baseline (torch, cifar100, 32x32) ===
+  cifar100_0_mountain.png              -> road 0.54, man 0.10, bridge 0.06
+  cifar100_1_forest.png                -> forest 0.72, squirrel 0.10, rabbit 0.08
+  cifar100_2_seal.png                  -> otter 0.76, seal 0.17, beaver 0.03
+  cifar100_3_mushroom.png              -> mushroom 1.00, house 0.00, lizard 0.00
+  cifar100_4_sea.png                   -> sea 0.86, cloud 0.11, plain 0.03
+  cifar100_5_tulip.png                 -> bee 0.62, spider 0.29, beetle 0.08
+  cifar100_6_camel.png                 -> dinosaur 0.85, seal 0.03, camel 0.03
+  cifar100_7_butterfly.png             -> beetle 0.85, skunk 0.07, butterfly 0.02
+  top-1 correct on samples: 3/8
+
+=== mobilenetv2_kd (torch, cifar100, 32x32) ===
+  cifar100_0_mountain.png              -> road 0.99, bridge 0.01, man 0.00
+  cifar100_1_forest.png                -> forest 1.00, squirrel 0.00, table 0.00
+  cifar100_2_seal.png                  -> otter 0.52, beaver 0.33, seal 0.14
+  cifar100_3_mushroom.png              -> mushroom 1.00, dinosaur 0.00, elephant 0.00
+  cifar100_4_sea.png                   -> sea 0.99, cloud 0.01, plain 0.00
+  cifar100_5_tulip.png                 -> bee 0.68, spider 0.27, beetle 0.04
+  cifar100_6_camel.png                 -> camel 0.90, tractor 0.05, crocodile 0.04
+  cifar100_7_butterfly.png             -> skunk 0.59, shrew 0.32, beetle 0.07
+  top-1 correct on samples: 4/8
+
+=== squeezenet_kd (torch, cifar100, 32x32) ===
+  cifar100_0_mountain.png              -> road 0.94, bridge 0.02, train 0.02
+  cifar100_1_forest.png                -> forest 0.83, rabbit 0.15, table 0.01
+  cifar100_2_seal.png                  -> otter 0.91, seal 0.04, beaver 0.04
+  cifar100_3_mushroom.png              -> mushroom 0.99, table 0.01, snake 0.00
+  cifar100_4_sea.png                   -> sea 1.00, cloud 0.00, plain 0.00
+  cifar100_5_tulip.png                 -> bee 0.60, spider 0.40, orchid 0.00
+  cifar100_6_camel.png                 -> crocodile 1.00, dinosaur 0.00, kangaroo 0.00
+  cifar100_7_butterfly.png             -> beetle 0.55, skunk 0.32, shrew 0.10
+  top-1 correct on samples: 3/8
+
+=== efficientnet_lite0_kd (torch, cifar100, 32x32) ===
+  cifar100_0_mountain.png              -> road 0.95, man 0.03, bridge 0.01
+  cifar100_1_forest.png                -> forest 0.96, tiger 0.02, table 0.01
+  cifar100_2_seal.png                  -> otter 0.76, beaver 0.20, seal 0.04
+  cifar100_3_mushroom.png              -> mushroom 1.00, house 0.00, dinosaur 0.00
+  cifar100_4_sea.png                   -> sea 0.99, cloud 0.01, plain 0.00
+  cifar100_5_tulip.png                 -> beetle 0.54, bee 0.44, spider 0.02
+  cifar100_6_camel.png                 -> dinosaur 0.88, elephant 0.05, camel 0.05
+  cifar100_7_butterfly.png             -> skunk 0.97, butterfly 0.01, porcupine 0.01
+  top-1 correct on samples: 3/8
+
+=== nas_best (torch, cifar10, 24x24) ===
+  cifar10_0_cat.png                    -> cat 1.00, dog 0.00, automobile 0.00
+  cifar10_1_ship.png                   -> ship 1.00, automobile 0.00, airplane 0.00
+  cifar10_2_ship.png                   -> ship 0.96, automobile 0.04, airplane 0.00
+  cifar10_3_airplane.png               -> airplane 1.00, bird 0.00, ship 0.00
+  cifar10_4_frog.png                   -> frog 1.00, cat 0.00, bird 0.00
+  cifar10_5_frog.png                   -> frog 1.00, cat 0.00, dog 0.00
+  cifar10_6_automobile.png             -> automobile 0.97, truck 0.03, dog 0.00
+  cifar10_7_frog.png                   -> frog 1.00, bird 0.00, cat 0.00
+  top-1 correct on samples: 8/8
+
+===== unified_inference | 2026-11-20 10:10:37 =====
+
+=== mobilenetv2_baseline (onnx, cifar100, 32x32) ===
+  cifar100_0_mountain.png              -> road 0.88, sea 0.04, train 0.03
+  cifar100_1_forest.png                -> forest 0.64, rabbit 0.10, bottle 0.07
+  cifar100_2_seal.png                  -> otter 0.82, beaver 0.10, seal 0.06
+  cifar100_3_mushroom.png              -> mushroom 0.96, trout 0.02, house 0.01
+  cifar100_4_sea.png                   -> sea 0.93, cloud 0.06, plain 0.01
+  cifar100_5_tulip.png                 -> spider 0.82, bee 0.09, beetle 0.04
+  cifar100_6_camel.png                 -> crocodile 0.92, dinosaur 0.05, kangaroo 0.01
+  cifar100_7_butterfly.png             -> beetle 0.40, porcupine 0.17, shrew 0.07
+  top-1 correct on samples: 3/8
+
+=== squeezenet_baseline (onnx, cifar100, 32x32) ===
+  cifar100_0_mountain.png              -> road 0.41, spider 0.13, seal 0.10
+  cifar100_1_forest.png                -> forest 0.84, palm_tree 0.06, willow_tree 0.03
+  cifar100_2_seal.png                  -> seal 0.23, otter 0.21, dolphin 0.19
+  cifar100_3_mushroom.png              -> mushroom 0.97, lamp 0.01, table 0.01
+  cifar100_4_sea.png                   -> sea 0.67, plain 0.25, cloud 0.08
+  cifar100_5_tulip.png                 -> bee 0.91, spider 0.07, beetle 0.00
+  cifar100_6_camel.png                 -> seal 0.26, camel 0.14, tractor 0.11
+  cifar100_7_butterfly.png             -> beetle 0.37, mouse 0.06, chimpanzee 0.05
+  top-1 correct on samples: 4/8
+
+=== efficientnet_lite0_baseline (onnx, cifar100, 32x32) ===
+  cifar100_0_mountain.png              -> road 0.54, man 0.10, bridge 0.06
+  cifar100_1_forest.png                -> forest 0.72, squirrel 0.10, rabbit 0.08
+  cifar100_2_seal.png                  -> otter 0.76, seal 0.17, beaver 0.03
+  cifar100_3_mushroom.png              -> mushroom 1.00, house 0.00, lizard 0.00
+  cifar100_4_sea.png                   -> sea 0.86, cloud 0.11, plain 0.03
+  cifar100_5_tulip.png                 -> bee 0.62, spider 0.29, beetle 0.08
+  cifar100_6_camel.png                 -> dinosaur 0.85, seal 0.03, camel 0.03
+  cifar100_7_butterfly.png             -> beetle 0.85, skunk 0.07, butterfly 0.02
+  top-1 correct on samples: 3/8
+
+=== mobilenetv2_kd (onnx, cifar100, 32x32) ===
+  cifar100_0_mountain.png              -> road 0.99, bridge 0.01, man 0.00
+  cifar100_1_forest.png                -> forest 1.00, squirrel 0.00, table 0.00
+  cifar100_2_seal.png                  -> otter 0.52, beaver 0.33, seal 0.14
+  cifar100_3_mushroom.png              -> mushroom 1.00, dinosaur 0.00, elephant 0.00
+  cifar100_4_sea.png                   -> sea 0.99, cloud 0.01, plain 0.00
+  cifar100_5_tulip.png                 -> bee 0.68, spider 0.27, beetle 0.04
+  cifar100_6_camel.png                 -> camel 0.90, tractor 0.05, crocodile 0.04
+  cifar100_7_butterfly.png             -> skunk 0.59, shrew 0.32, beetle 0.07
+  top-1 correct on samples: 4/8
+
+=== squeezenet_kd (onnx, cifar100, 32x32) ===
+  cifar100_0_mountain.png              -> road 0.94, bridge 0.02, train 0.02
+  cifar100_1_forest.png                -> forest 0.83, rabbit 0.15, table 0.01
+  cifar100_2_seal.png                  -> otter 0.91, seal 0.04, beaver 0.04
+  cifar100_3_mushroom.png              -> mushroom 0.99, table 0.01, snake 0.00
+  cifar100_4_sea.png                   -> sea 1.00, cloud 0.00, plain 0.00
+  cifar100_5_tulip.png                 -> bee 0.60, spider 0.40, orchid 0.00
+  cifar100_6_camel.png                 -> crocodile 1.00, dinosaur 0.00, kangaroo 0.00
+  cifar100_7_butterfly.png             -> beetle 0.55, skunk 0.32, shrew 0.10
+  top-1 correct on samples: 3/8
+
+=== efficientnet_lite0_kd (onnx, cifar100, 32x32) ===
+  cifar100_0_mountain.png              -> road 0.95, man 0.03, bridge 0.01
+  cifar100_1_forest.png                -> forest 0.96, tiger 0.02, table 0.01
+  cifar100_2_seal.png                  -> otter 0.76, beaver 0.20, seal 0.04
+  cifar100_3_mushroom.png              -> mushroom 1.00, house 0.00, dinosaur 0.00
+  cifar100_4_sea.png                   -> sea 0.99, cloud 0.01, plain 0.00
+  cifar100_5_tulip.png                 -> beetle 0.54, bee 0.44, spider 0.02
+  cifar100_6_camel.png                 -> dinosaur 0.88, elephant 0.05, camel 0.05
+  cifar100_7_butterfly.png             -> skunk 0.97, butterfly 0.01, porcupine 0.01
+  top-1 correct on samples: 3/8
+
+=== nas_best (onnx, cifar10, 24x24) ===
+  cifar10_0_cat.png                    -> cat 1.00, dog 0.00, automobile 0.00
+  cifar10_1_ship.png                   -> ship 1.00, automobile 0.00, airplane 0.00
+  cifar10_2_ship.png                   -> ship 0.96, automobile 0.04, airplane 0.00
+  cifar10_3_airplane.png               -> airplane 1.00, bird 0.00, ship 0.00
+  cifar10_4_frog.png                   -> frog 1.00, cat 0.00, bird 0.00
+  cifar10_5_frog.png                   -> frog 1.00, cat 0.00, dog 0.00
+  cifar10_6_automobile.png             -> automobile 0.97, truck 0.03, dog 0.00
+  cifar10_7_frog.png                   -> frog 1.00, bird 0.00, cat 0.00
+  top-1 correct on samples: 8/8

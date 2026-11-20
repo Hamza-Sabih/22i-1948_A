@@ -1,0 +1,10 @@
+
+===== onnx_cpu_inference | 2026-11-20 10:07:12 =====
+[ort-cpu] mobilenetv2_baseline         top1= 72.55 top5= 93.12 b1-latency=2.816ms throughput=297 img/s
+[ort-cpu] squeezenet_baseline          top1= 64.23 top5= 89.20 b1-latency=0.743ms throughput=1128 img/s
+[ort-cpu] efficientnet_lite0_baseline  top1= 72.80 top5= 93.69 b1-latency=3.360ms throughput=255 img/s
+[ort-cpu] mobilenetv2_kd               top1= 75.18 top5= 94.53 b1-latency=2.698ms throughput=309 img/s
+[ort-cpu] squeezenet_kd                top1= 64.14 top5= 89.70 b1-latency=0.747ms throughput=1143 img/s
+[ort-cpu] efficientnet_lite0_kd        top1= 75.50 top5= 94.53 b1-latency=3.425ms throughput=258 img/s
+[ort-cpu] nas_best                     top1= 92.29 top5= 99.80 b1-latency=3.766ms throughput=549 img/s
+[ort-cpu] wrote /content/drive/MyDrive/22i-1948_A/results/onnx_cpu_inference.csv

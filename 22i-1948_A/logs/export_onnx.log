@@ -1,0 +1,10 @@
+
+===== export_onnx | 2026-11-20 10:07:01 =====
+[onnx] mobilenetv2_baseline         -> mobilenetv2_baseline.onnx           8.95MB  max|diff|=4.77e-06  agree=1.00  OK
+[onnx] squeezenet_baseline          -> squeezenet_baseline.onnx            2.96MB  max|diff|=3.81e-06  agree=1.00  OK
+[onnx] efficientnet_lite0_baseline  -> efficientnet_lite0_baseline.onnx   13.31MB  max|diff|=4.77e-06  agree=1.00  OK
+[onnx] mobilenetv2_kd               -> mobilenetv2_kd.onnx                 8.95MB  max|diff|=7.63e-06  agree=1.00  OK
+[onnx] squeezenet_kd                -> squeezenet_kd.onnx                  2.96MB  max|diff|=1.34e-05  agree=1.00  OK
+[onnx] efficientnet_lite0_kd        -> efficientnet_lite0_kd.onnx         13.31MB  max|diff|=7.63e-06  agree=1.00  OK
+[onnx] nas_best                     -> nas_best.onnx                       0.87MB  max|diff|=5.25e-06  agree=1.00  OK
+[onnx] wrote /content/drive/MyDrive/22i-1948_A/results/onnx_export.csv

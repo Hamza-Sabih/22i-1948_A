@@ -1,0 +1,11 @@
+{
+  "model": "resnet50",
+  "variant": "teacher",
+  "params": 23705252,
+  "size_mb": 90.72161769866943,
+  "test_top1": 84.08,
+  "test_top5": 96.96,
+  "best_epoch_top1": 84.08,
+  "epochs": 30,
+  "train_time_s": 1521.0802097320557
+}
